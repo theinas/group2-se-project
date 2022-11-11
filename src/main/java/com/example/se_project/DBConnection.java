@@ -8,17 +8,16 @@ import java.util.Map;
 public class DBConnection {
     private final String SQL_CONNECTION = "jdbc:mysql://127.0.0.1:3306/project";
     private final String SQL = "jdbc:mysql://127.0.0.1:3306/project?"
-            + "allowPublicKeyRetrieval=true&useSSL=false&user=root&password=Marta1977!";
+            + "allowPublicKeyRetrieval=true&useSSL=false&user=root&password=OurPassword123";
     private Connection connection;
     private Statement statement;
 
     public DBConnection() throws SQLException {
         connection = DriverManager.getConnection(SQL);
-        //connection = DriverManager.getConnection(SQL_CONNECTION,"root","Marta1977!");
         statement = connection.createStatement();
     }
     public void addEntryToDB(String query) throws SQLException {
-        statement.executeQuery(query);
+        statement.execute(query);
 
     }
     public List<Map<String, Object>> getResults(String query) throws SQLException {

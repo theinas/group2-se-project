@@ -1,11 +1,13 @@
 package com.example.se_project;
 
+import java.sql.SQLException;
+
 public abstract class User {
     protected String lastName;
     protected String firstName;
     protected int ID;
     protected String password;
-    protected String role;
+    protected UserRoles role;
 
     public abstract void modify();
     public abstract void delete();
@@ -26,7 +28,7 @@ public abstract class User {
         this.password = password;
     }
 
-    public void setRole(String role) {
+    public void setRole(UserRoles role) {
         this.role = role;
     }
 
@@ -46,7 +48,9 @@ public abstract class User {
         return ID;
     }
 
-    public String getRole() {
+    public UserRoles getRole() {
         return role;
     }
+
+
 }

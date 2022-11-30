@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Text?>
+<?import javafx.geometry.Insets?>
+<GridPane xmlns="http://javafx.com/javafx"
+          xmlns:fx="http://javafx.com/fxml"
+          fx:controller="com.example.se_project.CreateCustomerViewController"
+          prefHeight="400.0" prefWidth="600.0">
+    <padding><Insets top="25" right="25" bottom="10" left="25"/></padding>
+
+    <Text text="Create a customer profile:"
+          GridPane.rowIndex="0"
+          GridPane.columnIndex="0"/>
+
+    <Text text="Company name:"
+          GridPane.columnIndex="0"
+          GridPane.rowIndex="1"/>
+    <TextField fx:id="nameTextField"
+               GridPane.columnIndex="1"
+               GridPane.rowIndex="1"/>
+
+
+    <Text text="Street Address:"
+          GridPane.columnIndex="0"
+          GridPane.rowIndex="2"/>
+    <TextField fx:id="streetTextField"
+               GridPane.columnIndex="1"
+               GridPane.rowIndex="2"/>
+
+    <Text text="City: "
+          GridPane.columnIndex="0"
+          GridPane.rowIndex="3"/>
+    <TextField fx:id="cityTextField"
+               GridPane.columnIndex="1"
+               GridPane.rowIndex="3"/>
+
+    <Text text="State:"
+          GridPane.columnIndex="0"
+          GridPane.rowIndex="4"/>
+    <ComboBox fx:id="stateComboBox"
+               GridPane.columnIndex="1"
+               GridPane.rowIndex="4"
+    />
+
+    <Text text="Phone:"
+          GridPane.columnIndex="0"
+          GridPane.rowIndex="5"/>
+    <TextField fx:id="phoneTextField"
+               GridPane.columnIndex="1"
+               GridPane.rowIndex="5"/>
+
+    <Label fx:id="error"
+           GridPane.columnIndex="1"
+           GridPane.rowIndex="6"
+           textFill="red"
+    />
+
+
+    <Button fx:id="createCustomerButton"
+            GridPane.columnIndex="0"
+            GridPane.rowIndex="6"
+            text="Create"
+    onAction="#createCustomerButtonOnClick"/>
+
+    <Button fx:id="backToMainButton"
+            text="Back to main menu"
+            GridPane.columnIndex="0"
+            GridPane.rowIndex="7"
+            onAction="#onBackToMainButtonClick"/>
+
+
+</GridPane>

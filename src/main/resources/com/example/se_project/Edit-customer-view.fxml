@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Text?>
+<GridPane xmlns="http://javafx.com/javafx"
+          xmlns:fx="http://javafx.com/fxml"
+          fx:controller="com.example.se_project.EditCustomerViewController"
+          prefHeight="400.0" prefWidth="600.0">
+    <padding><Insets top="25" right="25" bottom="10" left="25"/></padding>
+    <Text GridPane.rowIndex="0"
+          GridPane.columnIndex="0"
+    text="Select Customer to edit: "/>
+    <ComboBox fx:id="customersComboBox"
+    GridPane.columnIndex="1"
+    GridPane.rowIndex="0"
+    onAction="#onCustomerComboBoxValueChanged"/>
+
+    <Text text="Company name:"
+          GridPane.columnIndex="0"
+          GridPane.rowIndex="1"/>
+    <TextField fx:id="nameTextField"
+               GridPane.columnIndex="1"
+               GridPane.rowIndex="1"/>
+
+
+    <Text text="Street Address:"
+          GridPane.columnIndex="0"
+          GridPane.rowIndex="2"/>
+    <TextField fx:id="streetTextField"
+               GridPane.columnIndex="1"
+               GridPane.rowIndex="2"/>
+
+    <Text text="City: "
+          GridPane.columnIndex="0"
+          GridPane.rowIndex="3"/>
+    <TextField fx:id="cityTextField"
+               GridPane.columnIndex="1"
+               GridPane.rowIndex="3"/>
+
+    <Text text="State:"
+          GridPane.columnIndex="0"
+          GridPane.rowIndex="4"/>
+    <ComboBox fx:id="stateComboBox"
+              GridPane.columnIndex="1"
+              GridPane.rowIndex="4"
+    />
+
+    <Text text="Phone:"
+          GridPane.columnIndex="0"
+          GridPane.rowIndex="5"/>
+    <TextField fx:id="phoneTextField"
+               GridPane.columnIndex="1"
+               GridPane.rowIndex="5"/>
+
+
+    <Text text="Balance: "
+          GridPane.columnIndex="0"
+          GridPane.rowIndex="6"/>
+    <TextField fx:id="balanceTextField"
+               GridPane.columnIndex="1"
+               GridPane.rowIndex="6"/>
+
+    <Text text="Last Paid Amount: "
+          GridPane.columnIndex="0"
+          GridPane.rowIndex="7"/>
+    <TextField fx:id="lastPaidAmountTextField"
+               GridPane.columnIndex="1"
+               GridPane.rowIndex="7"/>
+
+    <Text text="Last Order Date: "
+          GridPane.columnIndex="0"
+          GridPane.rowIndex="8"/>
+    <DatePicker fx:id="lastOrderDatePicker"
+                GridPane.columnIndex="1"
+                GridPane.rowIndex="8"/>
+
+    <Button fx:id="updateCustomerButton"
+            text="Update Customer"
+            GridPane.columnIndex="0"
+            GridPane.rowIndex="9"
+    onAction="#onUpdateCustomerButtonClick"/>
+    <Label fx:id="error"
+           GridPane.columnIndex="1"
+           GridPane.rowIndex="9"
+           textFill="red"
+    />
+
+    <Button fx:id="backToMainButton"
+            text="Back to main menu"
+            GridPane.columnIndex="0"
+            GridPane.rowIndex="10"
+            onAction="#onBackToMainButtonClick"/>
+
+
+</GridPane>

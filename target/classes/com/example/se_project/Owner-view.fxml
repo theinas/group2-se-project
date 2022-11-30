@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+
+<GridPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.se_project.OwnerViewController"
+            prefHeight="400.0" prefWidth="600.0">
+    <padding><Insets top="25" right="25" bottom="10" left="25"/></padding>
+    <Button fx:id="createCustomerButton"
+            GridPane.columnIndex="0"
+            GridPane.rowIndex="0"
+            text="Create Customer Profiles"
+            onAction="#onCreateCustomerButtonClick"
+            />
+    <Button fx:id="editCustomerButton"
+            GridPane.columnIndex="1"
+            GridPane.rowIndex="0"
+            text="Edit Customer Profiles"
+            onAction="#onEditCustomerButtonClick"
+            />
+
+    <Button fx:id="deleteCustomerButton"
+            GridPane.columnIndex="0"
+            GridPane.rowIndex="2"
+            text="Delete Customer Profiles"
+            onAction="#onDeleteCustomerButtonClick"
+            />
+
+</GridPane>

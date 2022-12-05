@@ -20,6 +20,7 @@ public class DBConnection {
         statement.execute(query);
 
     }
+    //returns a List
     public List<Map<String, Object>> getResults(String query) throws SQLException {
             ResultSet rs = statement.executeQuery(query);
             List<Map<String, Object>> results = resultSetToList(rs);
@@ -27,6 +28,11 @@ public class DBConnection {
 
 
 
+    }
+    //returns ResultSet
+    public ResultSet getResultSet(String query) throws SQLException
+    {
+        return statement.executeQuery(query);
     }
     public List<Map<String, Object>> resultSetToList(ResultSet rs) throws SQLException {
         ResultSetMetaData md = rs.getMetaData();

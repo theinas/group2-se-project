@@ -39,4 +39,11 @@
             onAction="#onDeleteCustomerButtonClick"
             />
 
+    <Button fx:id="searchCustomerButton"
+            GridPane.columnIndex="1"
+            GridPane.rowIndex="2"
+            text="Search for a Customer Profile"
+            onAction="#onSearchCustomerButtonClick"
+    />
+
 </GridPane>

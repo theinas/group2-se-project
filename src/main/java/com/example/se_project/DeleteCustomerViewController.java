@@ -4,9 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -17,6 +15,7 @@ import java.util.Map;
 
 public class DeleteCustomerViewController {
     private List<String> customers = new ArrayList<>();
+    List<Map<String, Object>> results;
 
     @FXML
     protected ComboBox customersComboBox;
@@ -31,8 +30,9 @@ public class DeleteCustomerViewController {
     public void onDeleteCustomerButtonClick() throws SQLException {
         if(customersComboBox.getValue()!= null)
         {
-            deleteCustomerFromDB();
-            message.setText(customersComboBox.getValue().toString() + " was deleted");
+                deleteCustomerFromDB();
+                message.setText(customersComboBox.getValue().toString() + " was deleted");
+
         }
         else
         {
@@ -53,7 +53,7 @@ public class DeleteCustomerViewController {
 
     public void getCustomersFromDB() throws SQLException {
         DBConnection connection = new DBConnection();
-        List<Map<String, Object>> results = connection.getResults("select company_name from customer;");
+        results = connection.getResults("select company_name from customer;");
         addCustomersToList(results);
         connection.closeConnection();
 
@@ -73,6 +73,7 @@ public class DeleteCustomerViewController {
         connection.addEntryToDB(queryBuilder());
         connection.closeConnection();
     }
+
 
 
 }

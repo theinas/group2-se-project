@@ -20,8 +20,8 @@ public class Item {
 
     //method to add item to database
     public void addToDB() throws SQLException {
-        String query = "INSERT INTO item(itemID, itemName, vendorID, salePrice, category, expiration," +
-                "purchasePrice, measurement, quantityOnHand) values('"+ itemID + "','"+ itemName+ "','"+
+        String query = "INSERT INTO item(ID, name, vendor_id, selling_price, category, expiration," +
+                "purchase_price, measurement_unit, quantity_available) values('"+ itemID + "','"+ itemName+ "','"+
                 vendorID + "','"+ salePrice+ "','"+ category + "','" + expiration + "'.'" + purchasePrice +
                 "','" + measurement + "','" + quantityOnHand + "');'";
         DBConnection connection = new DBConnection();

@@ -55,10 +55,20 @@ public class LoginController {
        Stage window = (Stage)loginButton.getScene().getWindow();
        window.setScene(new Scene(root));
    }
+
+    public void handlePurchaserLogin() throws IOException {
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Purchaser-view.fxml")));
+        Stage window = (Stage)loginButton.getScene().getWindow();
+        window.setScene(new Scene(root));
+    }
+
+
    public void forwardUserToPage(UserRoles role) throws IOException {
        switch (role)
        {
            case OWNER -> handleOwnerLogin();
+
+           case PURCHASER -> handlePurchaserLogin();
        }
    }
 

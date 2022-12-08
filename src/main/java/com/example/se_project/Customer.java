@@ -11,6 +11,7 @@ public class Customer  {
     private double balance;
     private double lastPaidAmount;
     private Date lastOrderDate;
+
     public Customer(String name, String street, String city, String state, String phone) throws SQLException {
         this.name = name;
         this.address = new Address(street, city, state);

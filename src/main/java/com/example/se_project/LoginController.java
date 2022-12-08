@@ -1,3 +1,5 @@
+//@Author: Inas Hamad
+
 package com.example.se_project;
 
 import javafx.fxml.FXML;
@@ -50,17 +52,24 @@ public class LoginController {
 
 
    }
-   public void handleOwnerLogin() throws IOException {
-       Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Owner-view.fxml")));
-       Stage window = (Stage)loginButton.getScene().getWindow();
-       window.setScene(new Scene(root));
-   }
+
    public void forwardUserToPage(UserRoles role) throws IOException {
        switch (role)
        {
            case OWNER -> handleOwnerLogin();
+           case SALES_PERSON -> handleSalesPersonLogin();
        }
    }
+    public void handleOwnerLogin() throws IOException {
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Owner-view.fxml")));
+        Stage window = (Stage)loginButton.getScene().getWindow();
+        window.setScene(new Scene(root));
+    }
+    public void handleSalesPersonLogin() throws IOException{
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Sales-person-view.fxml")));
+        Stage window = (Stage)loginButton.getScene().getWindow();
+        window.setScene(new Scene(root));
+    }
 
 
    public UserRoles checkRole(String r)

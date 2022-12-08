@@ -1,3 +1,5 @@
+//@Author: Inas Hamad
+
 package com.example.se_project;
 
 import javafx.fxml.FXML;
@@ -108,7 +110,7 @@ public class EditCustomerViewController {
 
     }
 
-    public LocalDate formatDate(String input) {
+    public LocalDate formatDate(String input)  {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MMM-dd");
         formatter = formatter.withLocale(Locale.US);
         return LocalDate.parse(input, formatter);

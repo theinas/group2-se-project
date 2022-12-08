@@ -4,9 +4,6 @@ import java.sql.SQLException;
 
 //declare class item with all necessary members
 public class Item {
-    //enums for categories and measurements
-    public enum Categories {fruits, nuts, dairy, meat, snacks, soda, juice, bakery};
-    public enum Measurements {pounds, gallons, dozen, ounces, fluidOunces};
     //required members of item class
     public int itemID;
     public String itemName;
@@ -72,7 +69,11 @@ public class Item {
 
     //item name
     public void setItemName(String itemName) {
-        this.itemName = itemName;
+        InputValidator v = new InputValidator();
+        if(v.validateLength(itemName, 20))
+        {
+            this.itemName = itemName;
+        }
     }
     public String getItemName() {
         return itemName;

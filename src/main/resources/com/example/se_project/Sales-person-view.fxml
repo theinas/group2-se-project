@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Text?>
+<GridPane xmlns="http://javafx.com/javafx"
+          xmlns:fx="http://javafx.com/fxml"
+          fx:controller="com.example.se_project.SalesPersonViewController"
+          prefHeight="400.0" prefWidth="600.0">
+    <ComboBox fx:id="customersComboBox"
+              GridPane.columnIndex="0"
+              GridPane.rowIndex="0"
+              onAction="#onCustomerComboBoxValueChanged"/>
+
+    <Text text="Add at least 1 item to the order"
+          GridPane.rowIndex="1"
+          GridPane.columnIndex="0"/>
+
+    <CheckBox fx:id="item1"
+              GridPane.columnIndex="0"
+              GridPane.rowIndex="2"
+              text="Item 1:"/>
+    <ComboBox fx:id="item1ComboBox"
+              GridPane.columnIndex="1"
+              GridPane.rowIndex="2"/>
+
+    <Text text="Need by date: "
+          GridPane.columnIndex="2"
+          GridPane.rowIndex="2"/>
+    <DatePicker fx:id="needByDatePicker"
+                GridPane.columnIndex="3"
+                GridPane.rowIndex="2"/>
+
+    <Text text="Order Date: "
+          GridPane.columnIndex="0"
+          GridPane.rowIndex="3"/>
+    <DatePicker fx:id="orderDatePicker"
+                GridPane.columnIndex="1"
+                GridPane.rowIndex="3"/>
+
+    <Text text="Quantity: "
+          GridPane.columnIndex="2"
+          GridPane.rowIndex="3"/>
+    <TextField fx:id="quantityTextField"
+               GridPane.columnIndex="3"
+               GridPane.rowIndex="3"/>
+
+
+    <Button fx:id="createOrderButton"
+            text="Create CustomerOrder"
+            GridPane.columnIndex="0"
+            GridPane.rowIndex="1"/>
+
+</GridPane>

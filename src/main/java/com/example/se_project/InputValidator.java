@@ -2,6 +2,9 @@
 
 package com.example.se_project;
 
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+
 import java.time.LocalDate;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -36,8 +39,23 @@ public class InputValidator {
     public boolean validateDate(LocalDate date)
     {
         if (date.isAfter(LocalDate.now()))
-            return false;
-        else
             return true;
+        else
+            return false;
+    }
+    public Boolean validateDouble(String number, String errorMessage)
+    {
+        try{
+            Double doub = Double.parseDouble(number);
+            return true;
+        }
+        catch (NumberFormatException ex)
+        {
+
+            Alert alert = new Alert(Alert.AlertType.ERROR, errorMessage, ButtonType.OK);
+            alert.show();
+            return false;
+        }
+
     }
 }

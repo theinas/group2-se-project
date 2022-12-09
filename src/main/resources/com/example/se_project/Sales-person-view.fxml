@@ -11,8 +11,11 @@
           xmlns:fx="http://javafx.com/fxml"
           fx:controller="com.example.se_project.SalesPersonViewController"
           prefHeight="400.0" prefWidth="600.0">
+    <Text text="Select customer: "
+          GridPane.columnIndex="0"
+          GridPane.rowIndex="0"/>
     <ComboBox fx:id="customersComboBox"
-              GridPane.columnIndex="0"
+              GridPane.columnIndex="1"
               GridPane.rowIndex="0"
               onAction="#onCustomerComboBoxValueChanged"/>
 
@@ -27,32 +30,99 @@
     <ComboBox fx:id="item1ComboBox"
               GridPane.columnIndex="1"
               GridPane.rowIndex="2"/>
-
-    <Text text="Need by date: "
+    <Text text="Quantity: "
           GridPane.columnIndex="2"
           GridPane.rowIndex="2"/>
-    <DatePicker fx:id="needByDatePicker"
-                GridPane.columnIndex="3"
-                GridPane.rowIndex="2"/>
+    <TextField fx:id="quantity1TextField"
+               GridPane.columnIndex="3"
+               GridPane.rowIndex="2"/>
 
-    <Text text="Order Date: "
-          GridPane.columnIndex="0"
-          GridPane.rowIndex="3"/>
-    <DatePicker fx:id="orderDatePicker"
-                GridPane.columnIndex="1"
-                GridPane.rowIndex="3"/>
+
+
+    <CheckBox fx:id="item2"
+              GridPane.columnIndex="0"
+              GridPane.rowIndex="3"
+              text="Item 2:"/>
+    <ComboBox fx:id="item2ComboBox"
+              GridPane.columnIndex="1"
+              GridPane.rowIndex="3"/>
 
     <Text text="Quantity: "
           GridPane.columnIndex="2"
           GridPane.rowIndex="3"/>
-    <TextField fx:id="quantityTextField"
+    <TextField fx:id="quantity2TextField"
                GridPane.columnIndex="3"
                GridPane.rowIndex="3"/>
 
 
+    <CheckBox fx:id="item3"
+              GridPane.columnIndex="0"
+              GridPane.rowIndex="4"
+              text="Item 3:"/>
+    <ComboBox fx:id="item3ComboBox"
+              GridPane.columnIndex="1"
+              GridPane.rowIndex="4"/>
+
+    <Text text="Quantity: "
+          GridPane.columnIndex="2"
+          GridPane.rowIndex="4"/>
+    <TextField fx:id="quantity3TextField"
+               GridPane.columnIndex="3"
+               GridPane.rowIndex="4"/>
+
+
+    <CheckBox fx:id="item4"
+              GridPane.columnIndex="0"
+              GridPane.rowIndex="5"
+              text="Item 4:"/>
+    <ComboBox fx:id="item4ComboBox"
+              GridPane.columnIndex="1"
+              GridPane.rowIndex="5"/>
+
+
+    <Text text="Quantity: "
+          GridPane.columnIndex="2"
+          GridPane.rowIndex="5"/>
+    <TextField fx:id="quantity4TextField"
+               GridPane.columnIndex="3"
+               GridPane.rowIndex="5"/>
+
+
+    <CheckBox fx:id="item5"
+              GridPane.columnIndex="0"
+              GridPane.rowIndex="6"
+              text="Item 5:"/>
+    <ComboBox fx:id="item5ComboBox"
+              GridPane.columnIndex="1"
+              GridPane.rowIndex="6"/>
+
+
+
+    <Text text="Quantity: "
+          GridPane.columnIndex="2"
+          GridPane.rowIndex="6"/>
+    <TextField fx:id="quantity5TextField"
+               GridPane.columnIndex="3"
+               GridPane.rowIndex="6"/>
+
+
+    <Text text="Need by date: "
+          GridPane.columnIndex="0"
+          GridPane.rowIndex="7"/>
+    <DatePicker fx:id="needByDatePicker"
+                GridPane.columnIndex="1"
+                GridPane.rowIndex="7"/>
+
+    <Text text="Order Date: "
+          GridPane.columnIndex="2"
+          GridPane.rowIndex="7"/>
+    <DatePicker fx:id="orderDatePicker"
+                GridPane.columnIndex="3"
+                GridPane.rowIndex="7"/>
+
     <Button fx:id="createOrderButton"
             text="Create CustomerOrder"
-            GridPane.columnIndex="0"
-            GridPane.rowIndex="1"/>
+            GridPane.columnIndex="3"
+            GridPane.rowIndex="8"/>
 
 </GridPane>

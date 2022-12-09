@@ -2,6 +2,8 @@
 
 package com.example.se_project;
 
+import javafx.scene.control.DatePicker;
+
 public class Date {
     private int day;
     private int month;
@@ -12,5 +14,30 @@ public class Date {
         this.day=day;
         this.month=month;
         this.year=year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
+
+    public void setDay(int day) {
+        this.day = day;
+    }
+
+    public void setMonth(int month) {
+        this.month = month;
+    }
+
+    public void convertToDate(DatePicker datePicker)
+    {
+         setYear(datePicker.getValue().getYear());
+         setMonth(datePicker.getValue().getMonthValue());
+         setDay(datePicker.getValue().getDayOfMonth());
+
+    }
+
+    @Override
+    public String toString() {
+        return year+"-"+month+"-"+day;
     }
 }

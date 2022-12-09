@@ -6,10 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.ComboBox;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -20,11 +17,56 @@ import java.util.Map;
 
 public class SalesPersonViewController {
     private List<String> customers = new ArrayList<>();
+    private List<String> items = new ArrayList<>();
 
     @FXML
     protected ComboBox customersComboBox;
     @FXML
     protected Button createOrderButton;
+    @FXML
+    protected CheckBox item1;
+    @FXML
+    protected ComboBox item1ComboBox;
+
+    @FXML
+    protected TextField quantity1TextField;
+
+    @FXML
+    protected CheckBox item2;
+    @FXML
+    protected ComboBox item2ComboBox;
+
+    @FXML
+    protected TextField quantity2TextField;
+
+    @FXML
+    protected CheckBox item3;
+    @FXML
+    protected ComboBox item3ComboBox;
+
+    @FXML
+    protected TextField quantity3TextField;
+
+    @FXML
+    protected CheckBox item4;
+    @FXML
+    protected ComboBox item4ComboBox;
+
+    @FXML
+    protected TextField quantity4TextField;
+
+    @FXML
+    protected CheckBox item5;
+    @FXML
+    protected ComboBox item5ComboBox;
+
+    @FXML
+    protected TextField quantity5TextField;
+
+    @FXML
+    protected DatePicker needByDatePicker;
+    @FXML
+    protected DatePicker orderDatePicker;
 
 
     @FXML
@@ -45,7 +87,15 @@ public class SalesPersonViewController {
     }
     public void initialize() throws SQLException {
         getCustomersFromDB();
+        getItemsFromDB();
         customersComboBox.getItems().addAll(customers);
+        item1ComboBox.getItems().addAll(items);
+        item2ComboBox.getItems().addAll(items);
+        item3ComboBox.getItems().addAll(items);
+        item4ComboBox.getItems().addAll(items);
+        item5ComboBox.getItems().addAll(items);
+
+
     }
 //    public void forwardToCreatePage() throws IOException {
 //        Parent root = FXMLLoader.load(getClass().getResource("Create-customer-order-view.fxml"));
@@ -57,6 +107,19 @@ public class SalesPersonViewController {
         List<Map<String, Object>> results = connection.getResults("select company_name from customer;");
         addCustomersToList(results);
         connection.closeConnection();
+    }
+    public void getItemsFromDB() throws SQLException{
+        DBConnection connection = new DBConnection();
+        List<Map<String, Object>> results = connection.getResults("select name from item;");
+        addItemsToList(results);
+        connection.closeConnection();
+
+    }
+    public void addItemsToList(List<Map<String,Object>> results){
+        for (int i=0; i<results.size();i++)
+        {
+            items.add(results.get(i).get("name").toString());
+        }
     }
     public void addCustomersToList(List<Map<String, Object>> results) {
         for (int i = 0; i < results.size(); i++) {

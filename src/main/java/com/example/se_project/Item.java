@@ -29,10 +29,11 @@ public class Item {
     }
 
     //constructor with all fields filled out
-    Item(int itemID, int vendorID,double salePrice, Categories category, Date expiration,
+    Item(int itemID, String itemName, int vendorID,double salePrice, Categories category, Date expiration,
          double purchasePrice, Measurements measurement, double quantityOnHand) throws SQLException
     {
         this.itemID = itemID;
+        this.itemName = itemName;
         this.vendorID = vendorID;
         this.salePrice = salePrice;
         this.category = category;

@@ -7,7 +7,7 @@ public class SalesPerson extends User{
     public SalesPerson(String lastName, String firstName,String password) throws SQLException {
         this.setLastName(lastName);
         this.setFirstName(firstName);
-        this.setRole(UserRoles.OWNER);
+        this.setRole(UserRoles.SALES_PERSON);
         addToDB(lastName, firstName, password, this.getRole().toString());
     }
 

@@ -74,7 +74,7 @@
     <CheckBox fx:id="item4"
               GridPane.columnIndex="0"
               GridPane.rowIndex="5"
-              text="Item 1:"/>
+              text="Item 4:"/>
     <ComboBox fx:id="item4ComboBox"
               GridPane.columnIndex="1"
               GridPane.rowIndex="5"/>
@@ -91,7 +91,7 @@
     <CheckBox fx:id="item5"
               GridPane.columnIndex="0"
               GridPane.rowIndex="6"
-              text="Item 1:"/>
+              text="Item 5:"/>
     <ComboBox fx:id="item5ComboBox"
               GridPane.columnIndex="1"
               GridPane.rowIndex="6"/>

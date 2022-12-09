@@ -1,10 +1,14 @@
 package com.example.se_project;
 
+/*
+Developer: Tanni Dev
+*/
+
 import java.sql.SQLException;
 
-public class Owner extends User{
+public class Purchaser extends User{
 
-    public Owner(String lastName, String firstName,String password) throws SQLException {
+    public Purchaser(String lastName, String firstName,String password) throws SQLException {
         this.setLastName(lastName);
         this.setFirstName(firstName);
         this.setRole(UserRoles.OWNER);

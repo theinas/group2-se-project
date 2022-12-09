@@ -22,6 +22,14 @@ public class InputValidator {
         else
             return false;
     }
+    public boolean validateMinLength(String string, int length)
+    {
+        if (string.length()>= length)
+            return true;
+        else
+            return false;
+    }
+
     public boolean validatePhoneNumber(String phone)
     {
         Pattern pattern = Pattern.compile("\\d+");

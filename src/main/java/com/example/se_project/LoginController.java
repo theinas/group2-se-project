@@ -61,6 +61,11 @@ public class LoginController {
         Stage window = (Stage)loginButton.getScene().getWindow();
         window.setScene(new Scene(root));
     }
+    public void handleSalesPersonLogin() throws IOException{
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Sales-person-view.fxml")));
+        Stage window = (Stage)loginButton.getScene().getWindow();
+        window.setScene(new Scene(root));
+    }
 
     public void handleInventoryManagerLogin() throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("InventoryManager-view.fxml")));
@@ -73,6 +78,7 @@ public class LoginController {
        switch (role)
        {
            case OWNER -> handleOwnerLogin();
+           case SALES_PERSON -> handleSalesPersonLogin();
 
            case PURCHASER -> handlePurchaserLogin();
 

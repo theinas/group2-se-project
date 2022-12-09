@@ -58,6 +58,14 @@ public class LoginController {
 
     public void handlePurchaserLogin() throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Purchaser-view.fxml")));
+//        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Dashboard.fxml")));
+        Stage window = (Stage)loginButton.getScene().getWindow();
+        window.setScene(new Scene(root));
+    }
+
+    public void handleAccountantLogin() throws IOException {
+//        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Purchaser-view.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Account-view.fxml")));
         Stage window = (Stage)loginButton.getScene().getWindow();
         window.setScene(new Scene(root));
     }
@@ -69,6 +77,8 @@ public class LoginController {
            case OWNER -> handleOwnerLogin();
 
            case PURCHASER -> handlePurchaserLogin();
+
+           case ACCOUNTANT -> handleAccountantLogin();
        }
    }
 

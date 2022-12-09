@@ -11,7 +11,7 @@ public class Purchaser extends User{
     public Purchaser(String lastName, String firstName,String password) throws SQLException {
         this.setLastName(lastName);
         this.setFirstName(firstName);
-        this.setRole(UserRoles.OWNER);
+        this.setRole(UserRoles.PURCHASER);
         addToDB(lastName, firstName, password);
     }
 

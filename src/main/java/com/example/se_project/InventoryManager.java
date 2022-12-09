@@ -25,7 +25,7 @@ public class InventoryManager extends User {
 
     public void addToDB(String ln, String fn, String password) throws SQLException {
         String query = "INSERT INTO users(last_name, first_name, password, role) values(" + ln + "," + fn + ","
-                + password + "," + role + ");";
+                + password + "," + this.getRole().toString() + ");";
         DBConnection connection = new DBConnection();
         connection.addEntryToDB(query);
         connection.closeConnection();

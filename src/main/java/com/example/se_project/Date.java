@@ -53,9 +53,4 @@ public class Date {
          setDay(datePicker.getValue().getDayOfMonth());
 
     }
-
-    @Override
-    public String toString() {
-        return year+"-"+month+"-"+day;
-    }
 }

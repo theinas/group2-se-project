@@ -27,7 +27,8 @@ public class Purchaser extends User{
 
 
     public void addToDB(String ln, String fn, String password) throws SQLException {
-        String query = "INSERT INTO users(last_name, first_name, password) values(" + ln+ ","+fn+","+password+");";
+        String query = "INSERT INTO users(last_name, first_name, password, role) values(" + ln+ ","+fn+","
+                +password+"," + role+");";
         DBConnection connection = new DBConnection();
         connection.addEntryToDB(query);
         connection.closeConnection();

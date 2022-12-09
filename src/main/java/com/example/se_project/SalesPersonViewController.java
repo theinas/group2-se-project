@@ -67,6 +67,16 @@ public class SalesPersonViewController {
     protected DatePicker needByDatePicker;
     @FXML
     protected DatePicker orderDatePicker;
+    @FXML
+    protected Button displayAllItemsButton;
+
+    @FXML
+    public void onDisplayAllItemsButtonClick() throws IOException
+    {
+        Parent root = FXMLLoader.load(getClass().getResource("Display-all-items-view.fxml"));
+        Stage window = (Stage)displayAllItemsButton.getScene().getWindow();
+        window.setScene(new Scene(root));
+    }
 
 
     @FXML

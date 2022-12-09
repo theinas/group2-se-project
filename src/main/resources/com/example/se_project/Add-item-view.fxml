@@ -41,40 +41,26 @@
                GridPane.columnIndex="3"
                GridPane.rowIndex="2"/>
 
-    <Text text="Expiration Month: "
+    <Text text="Expiration Date: "
           GridPane.columnIndex="0"
-          GridPane.rowIndex="3"/>
-    <TextField fx:id="expirationMonthTextField"
-               GridPane.columnIndex="1"
-               GridPane.rowIndex="3"/>
-
-    <Text text="Expiration Day: "
-          GridPane.columnIndex="3"
-          GridPane.rowIndex="3"/>
-    <TextField fx:id="expirationDayTextField"
-               GridPane.columnIndex="4"
-               GridPane.rowIndex="3"/>
-
-    <Text text="Expiration Year: "
-          GridPane.columnIndex="5"
-          GridPane.rowIndex="3"/>
-    <TextField fx:id="expirationYearTextField"
-               GridPane.columnIndex="6"
-               GridPane.rowIndex="3"/>
+          GridPane.rowIndex="8"/>
+    <DatePicker fx:id="expirationDatePicker"
+                GridPane.columnIndex="1"
+                GridPane.rowIndex="3"/>
 
     <Text text="Unit of measurement: "
-          GridPane.columnIndex="0"
+          GridPane.columnIndex="3"
           GridPane.rowIndex="4"/>
     <ComboBox fx:id="unitComboBox"
-              GridPane.columnIndex="1"
+              GridPane.columnIndex="4"
               GridPane.rowIndex="4"
     />
 
     <Text text="Quantity on Hand : "
-          GridPane.columnIndex="2"
+          GridPane.columnIndex="0"
           GridPane.rowIndex="4"/>
     <TextField fx:id="quantityOnHandTextField"
-               GridPane.columnIndex="3"
+               GridPane.columnIndex="1"
                GridPane.rowIndex="4"/>
 
     <Text text="Vendor: "

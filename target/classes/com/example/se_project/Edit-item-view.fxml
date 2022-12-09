@@ -6,9 +6,99 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.se_project.EditItemViewController"
-            prefHeight="400.0" prefWidth="600.0">
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Text?>
+<GridPane xmlns="http://javafx.com/javafx"
+          xmlns:fx="http://javafx.com/fxml"
+          fx:controller="com.example.se_project.EditItemViewController"
+          prefHeight="400.0" prefWidth="600.0">
+    <padding><Insets top="25" right="25" bottom="10" left="25"/></padding>
+    <Text GridPane.rowIndex="0"
+          GridPane.columnIndex="0"
+          text="Select Item to edit: "/>
+    <ComboBox fx:id="itemsComboBox"
+              GridPane.columnIndex="1"
+              GridPane.rowIndex="0"
+              onAction="#onItemComboBoxValueChanged"/>
 
-</AnchorPane>
+    <Text text="Item Name:"
+          GridPane.columnIndex="0"
+          GridPane.rowIndex="1"/>
+    <TextField fx:id="nameTextField"
+               GridPane.columnIndex="1"
+               GridPane.rowIndex="1"/>
+
+
+    <Text text="Item ID:"
+          GridPane.columnIndex="2"
+          GridPane.rowIndex="1"/>
+    <TextField fx:id="IDTextField"
+               GridPane.columnIndex="3"
+               GridPane.rowIndex="1"/>
+
+    <Text text="Sale Price: "
+          GridPane.columnIndex="0"
+          GridPane.rowIndex="2"/>
+    <TextField fx:id="salePriceTextField"
+               GridPane.columnIndex="1"
+               GridPane.rowIndex="2"/>
+
+    <Text text="Category:"
+          GridPane.columnIndex="2"
+          GridPane.rowIndex="2"/>
+    <ComboBox fx:id="categoriesComboBox"
+              GridPane.columnIndex="3"
+              GridPane.rowIndex="2"/>
+
+    <Text text="Purchase Price:"
+          GridPane.columnIndex="0"
+          GridPane.rowIndex="3"/>
+    <TextField fx:id="purchasePriceTextField"
+               GridPane.columnIndex="1"
+               GridPane.rowIndex="3"/>
+
+
+    <Text text="Vendor ID: "
+          GridPane.columnIndex="2"
+          GridPane.rowIndex="3"/>
+    <TextField fx:id="vendorIDTextField"
+               GridPane.columnIndex="3"
+               GridPane.rowIndex="3"/>
+
+    <Text text="Quantity Available: "
+          GridPane.columnIndex="0"
+          GridPane.rowIndex="4"/>
+    <TextField fx:id="quantityOnHandTextField"
+               GridPane.columnIndex="1"
+               GridPane.rowIndex="4"/>
+
+    <ComboBox fx:id="measurementsComboBox"
+              GridPane.columnIndex="3"
+              GridPane.rowIndex="4"/>
+
+    <Text text="Expiration Date: "
+          GridPane.columnIndex="0"
+          GridPane.rowIndex="5"/>
+    <DatePicker fx:id="expirationDatePicker"
+                GridPane.columnIndex="1"
+                GridPane.rowIndex="5"/>
+
+    <Button fx:id="updateItemButton"
+            text="Update Item"
+            GridPane.columnIndex="1"
+            GridPane.rowIndex="6"
+            onAction="#onUpdateItemButtonClick"/>
+    <Label fx:id="displayError"
+           GridPane.columnIndex="1"
+           GridPane.rowIndex="7"
+           textFill="red"
+    />
+
+    <Button fx:id="backToMainButton"
+            text="Back to main menu"
+            GridPane.columnIndex="1"
+            GridPane.rowIndex="8"
+            onAction="#onBackToMainButtonClick"/>
+
+
+</GridPane>

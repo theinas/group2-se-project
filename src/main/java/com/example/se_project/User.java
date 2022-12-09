@@ -9,7 +9,7 @@ public abstract class User {
     protected String firstName;
     protected int ID;
     protected String password;
-    protected static UserRoles role;
+    public static UserRoles role;
 
     public abstract void modify();
     public abstract void delete();
@@ -56,7 +56,7 @@ public abstract class User {
 
     public static String checkRole()
     {
-        String thisRole = role.toString();
+        final String thisRole = role.toString();
         return thisRole;
     }
 

@@ -9,7 +9,10 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.*;
+
+import static com.example.se_project.LoginController.FINAL_ROLE;
 
 public class AddItemViewController {
     //declare members to mimic item class
@@ -33,11 +36,7 @@ public class AddItemViewController {
     @FXML
     protected ComboBox<Categories> categoryComboBox;
     @FXML
-    protected TextField expirationMonthTextField;
-    @FXML
-    protected TextField expirationDayTextField;
-    @FXML
-    protected TextField expirationYearTextField;
+    protected DatePicker expirationDatePicker;
     @FXML
     protected TextField purchasePriceTextField;
     @FXML
@@ -66,6 +65,7 @@ public class AddItemViewController {
         {
             Item newItem = new Item(name, vendorID, salePrice, category, expiration, purchasePrice,
                     unit, quantityOnHand);
+            addItemToDB();
             updateErrorLabel(name + " was added Successfully");
         }
         else
@@ -75,12 +75,26 @@ public class AddItemViewController {
     }
 
     @FXML
-    public void onBackToMainButtonClick() throws IOException
-    {
-        Parent root = FXMLLoader.load(getClass().getResource("InventoryManager-view.fxml"));
-        Stage window = (Stage) backToMainButton.getScene().getWindow();
-        window.setScene(new Scene(root));
+    public void onBackToMainButtonClick() throws IOException {
+        if (FINAL_ROLE.equals("OWNER")) {
+            Parent root = FXMLLoader.load(getClass().getResource("Owner-view.fxml"));
+            Stage window = (Stage) backToMainButton.getScene().getWindow();
+            window.setScene(new Scene(root));
+        } else if (FINAL_ROLE.equals("PURCHASER")) {
+            Parent root = FXMLLoader.load(getClass().getResource("Purchaser-view.fxml"));
+            Stage window = (Stage) backToMainButton.getScene().getWindow();
+            window.setScene(new Scene(root));
+        } else if (FINAL_ROLE.equals("INVENTORY_MANAGER")) {
+            Parent root = FXMLLoader.load(getClass().getResource("InventoryManager-view.fxml"));
+            Stage window = (Stage) backToMainButton.getScene().getWindow();
+            window.setScene(new Scene(root));
+        } else {
+            Parent root = FXMLLoader.load(getClass().getResource("Login-view.fxml"));
+            Stage window = (Stage) backToMainButton.getScene().getWindow();
+            window.setScene(new Scene(root));
+        }
     }
+
 
     public boolean isNameValid(String name) {
         if (isValid.validateIsAlphaAndSpaces(name) && isValid.validateLength(name, 20)) {
@@ -99,8 +113,8 @@ public class AddItemViewController {
             return false;}
     }
 
-    public boolean isExpirationValid(Date ex) {
-        if (isValid.validateFutureDate(ex) && isValid.validateDayMonthYear(ex))
+    public boolean isExpirationValid(LocalDate ex) {
+        if (isValid.validateDate(ex))
             return true;
         else {
             errorMessage += "\n Date must be in the future";
@@ -143,7 +157,8 @@ public class AddItemViewController {
 
     public boolean isValid() {
         if (isNameValid(name) && isPurchasePriceValid(purchasePrice) && isSalePriceValid(salePrice)
-                && isExpirationValid(expiration) && isQuantityValid(quantityOnHand) && noDuplicateItems(vendorItems)){
+                && isExpirationValid(expirationDatePicker.getValue()) && isQuantityValid(quantityOnHand)
+                && noDuplicateItems(vendorItems)){
             return true;}
         else {
             return false;
@@ -174,13 +189,7 @@ public class AddItemViewController {
         catch(NumberFormatException e){errorMessage = "Sale Price must be a positive number";
         updateErrorLabel(errorMessage);}
         category = categoryComboBox.getSelectionModel().getSelectedItem();
-        try{
-        expirationDay = Integer.parseInt(expirationDayTextField.getText());
-        expirationMonth = Integer.parseInt(expirationMonthTextField.getText());
-        expirationYear = Integer.parseInt(expirationYearTextField.getText());
-            expiration = new Date(expirationDay, expirationMonth, expirationYear);}
-        catch(NumberFormatException e){errorMessage = "Date must be entered in numerical format";
-            updateErrorLabel(errorMessage);}
+        expiration.convertToDate(expirationDatePicker);
         try{purchasePrice = Double.parseDouble(purchasePriceTextField.getText());}
         catch(NumberFormatException e){errorMessage = "Purchase Price must be a positive number";
             updateErrorLabel(errorMessage);}
@@ -234,5 +243,21 @@ public class AddItemViewController {
                     results.get(i).get("name").toString());
             vendorItems.add(tempMap);
         }
+    }
+
+    public void addItemToDB() throws SQLException {
+        DBConnection connection = new DBConnection();
+        String query = constructQuery();
+        connection.addEntryToDB(query);
+        connection.closeConnection();
+    }
+
+    public String constructQuery() {
+
+        String query = "update item set name = '" + name + "', ID = '"  + "', selling_price='" + salePrice +
+                "', category ='" + category.toString() + "', purchase_price='" + purchasePrice +
+                "', quantity_available=" + quantityOnHand + ", measurement_unit=" + unit.toString()
+                + " expiration= '" + expirationDatePicker.toString() + "vendor_id" + vendorID+ "';";
+        return query;
     }
 }

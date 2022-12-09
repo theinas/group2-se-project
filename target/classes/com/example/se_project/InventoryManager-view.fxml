@@ -54,5 +54,12 @@
             onAction="#onDisplayAllItemsButtonClick"
     />
 
+    <Button fx:id="backToMainButton"
+            GridPane.columnIndex="0"
+            GridPane.rowIndex="4"
+            text="Return to Home"
+            onAction="#onBackToMainButtonClick"
+    />
+
 
 </GridPane>

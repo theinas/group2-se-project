@@ -8,6 +8,8 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import java.io.IOException;
 
+import static com.example.se_project.LoginController.FINAL_ROLE;
+
 
 public class InventoryManagerViewController {
     @FXML
@@ -20,6 +22,16 @@ public class InventoryManagerViewController {
     Button SearchForItemButton;
     @FXML
     Button DisplayAllItemsButton;
+    @FXML
+    Button backToMainButton;
+
+    @FXML
+    public void onBackToMainButtonClick() throws IOException {
+        if (FINAL_ROLE.equals("OWNER")) {
+            Parent root = FXMLLoader.load(getClass().getResource("Owner-view.fxml"));
+            Stage window = (Stage) backToMainButton.getScene().getWindow();
+            window.setScene(new Scene(root));
+        }}
 
     @FXML
     public void onAddItemButtonClick() throws IOException {

@@ -27,7 +27,8 @@ public class LoginController {
     protected TextField passwordField;
     @FXML
     protected Button loginButton;
-
+//role tracking
+    static String FINAL_ROLE = new String();
     @FXML
     protected void onHelloButtonClick() {
         LoginText.setText("Welcome to JavaFX Application!");
@@ -36,10 +37,12 @@ public class LoginController {
    @FXML
     public void onLoginButtonClick() throws SQLException, IOException {
         UserRoles role = checkRole(roleField.getValue().toString());
+        String ROLE = role.toString();
         String DBPassword = getPasswordFromDB(usernameField.getText(), passwordField.getText());
         Boolean verified = verifyLogin(passwordField.getText(), DBPassword);
         if (verified)
         {
+            FINAL_ROLE = ROLE;
             LoginText.setText("Login Successful");
             forwardUserToPage(role);
         }
@@ -47,9 +50,8 @@ public class LoginController {
         else
             LoginText.setText("Incorrect username or password");
 
-
-
    }
+
    public void handleOwnerLogin() throws IOException {
        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Owner-view.fxml")));
        Stage window = (Stage)loginButton.getScene().getWindow();
@@ -132,6 +134,9 @@ public class LoginController {
            return false;
        }
    }
+
+
+
 
 
 }

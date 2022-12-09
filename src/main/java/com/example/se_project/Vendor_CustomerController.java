@@ -11,20 +11,19 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.net.URL;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.time.LocalDate;
+import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -116,10 +115,10 @@ public class Vendor_CustomerController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        con = new DB_Connection();
-        connection = con.getConnection();
-
-
+//        con = new DB_Connection();
+//        connection = con.getConnection();
+//
+//
         setDefault();
 
 
@@ -134,27 +133,65 @@ public class Vendor_CustomerController implements Initializable {
 
         btnSearch.setOnAction(event -> {
             try {
-                Statement s = connection.createStatement();
-                ResultSet rs = s.executeQuery("Select * from project.vendor where company_name = '" + txrSearch.getText() + "' OR ID = '" + txrSearch.getText() + "'");
-                if (rs.next()) {
-                    id = rs.getInt("id");
-                    txtid.setText(rs.getInt("id") + "");
-                    txtFullName.setText(rs.getString(2));
-                    txtStaddress.setText(rs.getString(3));
-                    txtCity.setText(rs.getString(4));
-                    txtState.setValue(rs.getString(5));
-                    txtPhn.setText(rs.getString(6));
-                    balance = Double.valueOf(rs.getString(7));
-                    txtBalance.setText(rs.getString(7));
-                    txtLastPaid.setText(rs.getString(8));
-                    txtLastOrder.setValue(LocalDate.parse(rs.getString(9)));
-                    txtSessional.setValue(LocalDate.parse(rs.getString(10)));
 
-                    txtFullName.setEditable(false);
-                } else {
+                String query_getAll = ("Select * from project.vendor where company_name = '" + txrSearch.getText() + "' OR ID = '" + txrSearch.getText() + "'");
+                DBConnection connection = new DBConnection();
+                List<Map<String, Object>> rs =  connection.getResults(query_getAll);
+//            connection.closeConnection();
 
+                if(rs.size()>0){
+
+                    for (int i = 0; i < rs.size(); i++) {
+//                n.add(rs.get(i).get(1).toString());
+//                        n.add(new Vendor_Customer(rs.get(i).get("ID").toString(),
+//                        rs.get(i).get("company_name").toString(),
+//                        rs.get(i).get("street_address").toString(),
+//                        rs.get(i).get("city").toString(), rs.get(i).get("state").toString(),
+//                        rs.get(i).get("phone").toString(), rs.get(i).get("balance").toString(),
+//                        rs.get(i).get("last_paid_amount").toString(), rs.get(i).get("last_order_date").toString(),
+//                        rs.get(i).get("seasonal_discount_start").toString()));
+
+                        txtid.setText(rs.get(i).get("ID").toString());
+                        txtFullName.setText(rs.get(i).get("company_name").toString());
+                        txtStaddress.setText(rs.get(i).get("street_address").toString());
+                        txtCity.setText(rs.get(i).get("city").toString());
+                        txtState.setValue(rs.get(i).get("state").toString());
+                        txtPhn.setText(rs.get(i).get("phone").toString());
+                        txtBalance.setText(rs.get(i).get("balance").toString());
+                        txtLastPaid.setText(rs.get(i).get("last_paid_amount").toString());
+                        txtLastOrder.setValue(LocalDate.parse(rs.get(i).get("last_order_date").toString()));
+                        txtSessional.setValue(LocalDate.parse(rs.get(i).get("seasonal_discount_start").toString()));
+
+                        txtFullName.setEditable(false);
+
+                    }
+
+                }else{
                     AlertController a = new AlertController(Alert.AlertType.WARNING, "Not Found", "Profile not found of this user");
                 }
+
+
+//                Statement s = connection.createStatement();
+//                ResultSet rs = s.executeQuery("Select * from project.vendor where company_name = '" + txrSearch.getText() + "' OR ID = '" + txrSearch.getText() + "'");
+//                if (rs.next()) {
+//                    id = rs.getInt("id");
+//                    txtid.setText(rs.getInt("id") + "");
+//                    txtFullName.setText(rs.getString(2));
+//                    txtStaddress.setText(rs.getString(3));
+//                    txtCity.setText(rs.getString(4));
+//                    txtState.setValue(rs.getString(5));
+//                    txtPhn.setText(rs.getString(6));
+//                    balance = Double.valueOf(rs.getString(7));
+//                    txtBalance.setText(rs.getString(7));
+//                    txtLastPaid.setText(rs.getString(8));
+//                    txtLastOrder.setValue(LocalDate.parse(rs.getString(9)));
+//                    txtSessional.setValue(LocalDate.parse(rs.getString(10)));
+//
+//                    txtFullName.setEditable(false);
+//                } else {
+//
+//                    AlertController a = new AlertController(Alert.AlertType.WARNING, "Not Found", "Profile not found of this user");
+//                }
 
                 if (txtid.getText().length() != 0) {
                     btnCreate.setVisible(false);
@@ -186,18 +223,31 @@ public class Vendor_CustomerController implements Initializable {
             } catch (Exception e) {
 
             }
-
             try {
-                String query = "Select company_name from project.vendor";
-                Statement s = connection.createStatement();
-                ResultSet rs = s.executeQuery(query);
+                String query_getAll = "Select company_name from project.vendor";
+                DBConnection connection = new DBConnection();
+                List<Map<String, Object>> rs =  connection.getResults(query_getAll);
+//            connection.closeConnection();
+                for (int i = 0; i < rs.size(); i++) {
 
-                while (rs.next()) {
-                    if (rs.getString(1).equals(name)) {
+                    if (rs.get(i).get("company_name").toString().equals(name)) {
                         duplicate = 1;
                         AlertController a = new AlertController(Alert.AlertType.ERROR, "Duplicate User id", "This User id is already exists");
                     }
                 }
+
+
+
+//                String query = "Select company_name from project.vendor";
+//                Statement s = connection.createStatement();
+//                ResultSet rs = s.executeQuery(query);
+//
+//                while (rs.next()) {
+//                    if (rs.getString(1).equals(name)) {
+//                        duplicate = 1;
+//                        AlertController a = new AlertController(Alert.AlertType.ERROR, "Duplicate User id", "This User id is already exists");
+//                    }
+//                }
             } catch (Exception e) {
                 System.out.println(e.toString());
             }
@@ -208,12 +258,19 @@ public class Vendor_CustomerController implements Initializable {
 
             if (duplicate == 0 && check == 1) {
                 try {   // if the name is alphabet and status is not null then category is added to database
-                    Statement s = connection.createStatement();
-//                    String q = "INSERT INTO distributer.vendor(fname, staddress, city, state, phone, balance, lastpaidamount, lastorderdate, sessionaldiscountstartdate) VALUES ('" + name + "','" + address + "','" + city + "','" + state + "','" + phone + "','" + balance + "','" + lastPaid + "','" + lastdate + "','" + sessional + "'  )";
-                    String query = "INSERT INTO project.vendor(company_name, street_address, city, state, phone, balance, last_paid_amount, last_order_date, seasonal_discount_start) VALUES ('" + name + "','" + address + "','" + city + "','" + state + "','" + phone + "','" + balance + "','" + lastPaid + "','" + lastdate + "','" + sessional + "'  )";
-                    s.execute(query);
+//                    Statement s = connection.createStatement();
+////                    String q = "INSERT INTO distributer.vendor(fname, staddress, city, state, phone, balance, lastpaidamount, lastorderdate, sessionaldiscountstartdate) VALUES ('" + name + "','" + address + "','" + city + "','" + state + "','" + phone + "','" + balance + "','" + lastPaid + "','" + lastdate + "','" + sessional + "'  )";
+//                    String query = "INSERT INTO project.vendor(company_name, street_address, city, state, phone, balance, last_paid_amount, last_order_date, seasonal_discount_start) VALUES ('" + name + "','" + address + "','" + city + "','" + state + "','" + phone + "','" + balance + "','" + lastPaid + "','" + lastdate + "','" + sessional + "'  )";
+//                    s.execute(query);
                     // setting default for table view.. because we added a new item so it need to be shown
                     // setDefault();
+
+                    String query = "INSERT INTO project.vendor(company_name, street_address, city, state, phone, balance, last_paid_amount, last_order_date, seasonal_discount_start) VALUES ('" + name + "','" + address + "','" + city + "','" + state + "','" + phone + "','" + balance + "','" + lastPaid + "','" + lastdate + "','" + sessional + "'  )";
+                    DBConnection connection = new DBConnection();
+                    connection.addEntryToDB(query);
+                    connection.closeConnection();
+
+
 
                     AlertController a = new AlertController(Alert.AlertType.INFORMATION, null, "Successfully Added");
                     setDefault();
@@ -247,9 +304,14 @@ public class Vendor_CustomerController implements Initializable {
             }
             if (check == 1) {
                 try {   // if the name is alphabet and status is not null then category is added to database
-                    Statement s = connection.createStatement();
-                    String q = "UPDATE project.vendor SET street_address = '" + address + "', city ='" + city + "',state ='" + state + "', phone ='" + phone + "',balance= '" + balance + "', last_paid_amount = '" + lastPaid + "', last_order_date ='" + lastdate + "', seasonal_discount_start ='" + sessional + "' where ID = '" + id + "'";
-                    s.execute(q);
+//                    Statement s = connection.createStatement();
+//                    String q = "UPDATE project.vendor SET street_address = '" + address + "', city ='" + city + "',state ='" + state + "', phone ='" + phone + "',balance= '" + balance + "', last_paid_amount = '" + lastPaid + "', last_order_date ='" + lastdate + "', seasonal_discount_start ='" + sessional + "' where ID = '" + id + "'";
+//                    s.execute(q);
+
+                    String query_update = "UPDATE project.vendor SET street_address = '" + address + "', city ='" + city + "',state ='" + state + "', phone ='" + phone + "',balance= '" + balance + "', last_paid_amount = '" + lastPaid + "', last_order_date ='" + lastdate + "', seasonal_discount_start ='" + sessional + "' where ID = '" + id + "'";
+                    DBConnection connection = new DBConnection();
+                    connection.addEntryToDB(query_update);
+                    connection.closeConnection();
 
 //                    String query = "UPDATE project.vendor SET staddress = '" + address + "', city ='" + city + "',state ='" + state + "', phone ='" + phone + "',balance= '" + balance + "', lastpaidamount = '" + lastPaid + "', lastorderdate ='" + lastdate + "', sessionaldiscountstartdate ='" + sessional + "' where id = '" + id + "'";
 //                    DBConnection connection = new DBConnection();
@@ -351,9 +413,19 @@ public class Vendor_CustomerController implements Initializable {
 
         ObservableList<Vendor_Customer> n = FXCollections.observableArrayList();
         try {
-            String query;
+//            String query;
+//
+//            query = "Select * from project.vendor";
 
-            query = "Select * from project.vendor";
+            String query_getAll = "Select * from project.vendor";
+            DBConnection connection = new DBConnection();
+            List<Map<String, Object>> rs =  connection.getResults(query_getAll);
+//            connection.closeConnection();
+            for (int i = 0; i < rs.size(); i++) {
+//                n.add(rs.get(i).get(1).toString());
+                n.add(new Vendor_Customer(rs.get(i).get("ID").toString(), rs.get(i).get("company_name").toString(), rs.get(i).get("street_address").toString(), rs.get(i).get("city").toString(), rs.get(i).get("state").toString(), rs.get(i).get("phone").toString(), rs.get(i).get("balance").toString(), rs.get(i).get("last_paid_amount").toString(), rs.get(i).get("last_order_date").toString(), rs.get(i).get("seasonal_discount_start").toString()));
+            }
+
 //
 //            //query = "Select * from distributer.vendor where fname Like '%" + txrSearch.getText() + "%'";
 //
@@ -362,16 +434,19 @@ public class Vendor_CustomerController implements Initializable {
 
 //            DBConnection connection = new DBConnection();
 
-            Statement s = connection.createStatement();
-            ResultSet rs = s.executeQuery(query);
+//            Statement s = connection.createStatement();
+//            ResultSet rs = s.executeQuery(query);
 
 //            connection.addEntryToDB(query);
 //            connection.closeConnection();
 
-            while (rs.next()) { // setting the values from table view same way as approval brand category
-                n.add(new Vendor_Customer(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10)));
-                //wholeData.add(rs.getString(1)+","+ rs.getString(2)+","+ rs.getString(3)+","+ rs.getString(4)+","+ rs.getString(5)+","+ rs.getString(6)+","+ rs.getString(7)+","+ rs.getString(8)+","+ rs.getString(9)+","+ rs.getString(10));
-            }
+
+
+
+//            while (rs.next()) { // setting the values from table view same way as approval brand category
+//                n.add(new Vendor_Customer(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10)));
+//                //wholeData.add(rs.getString(1)+","+ rs.getString(2)+","+ rs.getString(3)+","+ rs.getString(4)+","+ rs.getString(5)+","+ rs.getString(6)+","+ rs.getString(7)+","+ rs.getString(8)+","+ rs.getString(9)+","+ rs.getString(10));
+//            }
         } catch (Exception e) {
             System.out.println(e.toString());
         }

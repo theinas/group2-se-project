@@ -123,6 +123,7 @@
     <Button fx:id="createOrderButton"
             text="Create CustomerOrder"
             GridPane.columnIndex="3"
-            GridPane.rowIndex="8"/>
+            GridPane.rowIndex="8"
+    onAction="#onCreateOrderButtonClick"/>
 
 </GridPane>

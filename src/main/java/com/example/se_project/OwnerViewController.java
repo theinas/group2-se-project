@@ -19,6 +19,8 @@ public class OwnerViewController {
     @FXML
     Button searchCustomerButton;
     @FXML
+    Button createUserButton;
+    @FXML
     public void onCreateCustomerButtonClick() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("Create-customer-view.fxml"));
         Stage window = (Stage)createCustomerButton.getScene().getWindow();
@@ -48,5 +50,13 @@ public class OwnerViewController {
         Stage window = (Stage)searchCustomerButton.getScene().getWindow();
         window.setScene(new Scene(root));
     }
+    @FXML
+    public void onCreateUserProfileClick() throws IOException
+    {
+        Parent root = FXMLLoader.load(getClass().getResource("Create-user-profile.fxml"));
+        Stage window = (Stage)createUserButton.getScene().getWindow();
+        window.setScene(new Scene(root));
+    }
+
 }
 

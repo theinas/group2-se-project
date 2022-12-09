@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+
+
+<GridPane xmlns="http://javafx.com/javafx"
+          xmlns:fx="http://javafx.com/fxml"
+          fx:controller="com.example.se_project.UpdateUserProfileController"
+          prefHeight="400.0" prefWidth="600.0">
+    <padding><Insets top="25" right="25" bottom="10" left="25"/></padding>
+
+    <Text GridPane.rowIndex="0"
+          GridPane.columnIndex="0"
+          text="Select User to edit: "/>
+    <ComboBox fx:id="usersComboBox"
+              GridPane.columnIndex="1"
+              GridPane.rowIndex="0"
+              onAction="#onCustomerComboBoxValueChanged"/>
+
+
+</GridPane>

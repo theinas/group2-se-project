@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+
+
+
+<GridPane xmlns="http://javafx.com/javafx"
+          xmlns:fx="http://javafx.com/fxml"
+          fx:controller="com.example.se_project.CreateUserProfileController"
+          prefHeight="400.0" prefWidth="600.0">
+    <padding><Insets top="25" right="25" bottom="10" left="25"/></padding>
+
+    <Text text="Create a user profile:"
+          GridPane.rowIndex="0"
+          GridPane.columnIndex="0"/>
+
+    <Text text="First Name:"
+          GridPane.columnIndex="0"
+          GridPane.rowIndex="1"/>
+    <TextField fx:id="fNameTextField"
+               GridPane.columnIndex="1"
+               GridPane.rowIndex="1"/>
+
+    <Text text="Last Name:"
+          GridPane.columnIndex="0"
+          GridPane.rowIndex="2"/>
+    <TextField fx:id="lNameTextField"
+               GridPane.columnIndex="1"
+               GridPane.rowIndex="2"/>
+
+    <Text text="Password:"
+          GridPane.columnIndex="0"
+          GridPane.rowIndex="3"/>
+    <TextField fx:id="passTextField"
+               GridPane.columnIndex="1"
+               GridPane.rowIndex="3"/>
+
+    <Text text="Role: "
+          GridPane.columnIndex="0"
+          GridPane.rowIndex="4"/>
+    <ComboBox fx:id="roleComboBox"
+               GridPane.columnIndex="1"
+               GridPane.rowIndex="4"/>
+
+    <Button fx:id="createUserButton"
+            GridPane.columnIndex="0"
+            GridPane.rowIndex="6"
+            text="Create"
+            onAction="#createUserButtonOnClick"/>
+
+    <Button fx:id="backToMainButton"
+            text="Back to main menu"
+            GridPane.columnIndex="0"
+            GridPane.rowIndex="7"
+            onAction="#onBackToMainButtonClick"/>
+
+    <Label fx:id="error"
+           GridPane.columnIndex="1"
+           GridPane.rowIndex="6"
+           textFill="red"
+    />
+
+
+
+
+</GridPane>

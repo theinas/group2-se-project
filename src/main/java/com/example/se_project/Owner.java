@@ -8,7 +8,7 @@ public class Owner extends User{
         this.setLastName(lastName);
         this.setFirstName(firstName);
         this.setRole(UserRoles.OWNER);
-        addToDB(lastName, firstName, password);
+        addToDB(role, lastName, firstName, password);
     }
 
 
@@ -25,8 +25,8 @@ public class Owner extends User{
 
 
 
-    public void addToDB(String ln, String fn, String password) throws SQLException {
-        String query = "INSERT INTO users(last_name, first_name, password) values(" + ln+ ","+fn+","+password+");";
+    public void addToDB(UserRoles role, String ln, String fn, String password) throws SQLException {
+        String query = "INSERT INTO users(last_name, first_name, password, role) values('" + ln+ "','"+fn+"','"+password+"','" +role+ "');";
 
         DBConnection connection = new DBConnection();
 

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+          fx:controller="com.example.se_project.PurchaserViewController"
+          prefHeight="400.0" prefWidth="600.0"
+          xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19">
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <Button fx:id="createVendorButton"
+              mnemonicParsing="false"
+              onAction="#createVendorClicked"
+              prefHeight="26.0"
+              prefWidth="276.0"
+              text="Create Vendor Profile"
+      />
+
+      <Button fx:id="editVendorButton"
+              layoutX="10.0"
+              layoutY="64.0"
+              mnemonicParsing="false"
+              onAction="#updateVendorClicked"
+              prefHeight="26.0"
+              prefWidth="276.0"
+              text="Update Vendor Profile"
+              GridPane.columnIndex="1"
+      />
+      <Button fx:id="deleteVendorButton"
+              layoutX="310.0"
+              layoutY="64.0"
+              mnemonicParsing="false"
+              onAction="#deleteVendorClicked"
+              prefHeight="26.0"
+              prefWidth="276.0"
+              text="Delete Vendor Profile"
+              GridPane.columnIndex="2"
+      />
+   </children>
+</GridPane>

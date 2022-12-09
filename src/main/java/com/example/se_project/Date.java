@@ -23,4 +23,10 @@ public class Date {
     {
         return year;
     }
+
+    @Override
+    public String toString()
+    {
+        return(month + "/" + day + "/" + year);
+    }
 }

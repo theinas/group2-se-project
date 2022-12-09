@@ -5,15 +5,15 @@ import java.sql.SQLException;
 //declare class item with all necessary members
 public class Item {
     //required members of item class
-    public int itemID;
-    public String itemName;
-    public int vendorID;
-    public double salePrice;
-    Categories category;
-    public Date expiration;
-    public double purchasePrice;
-    Measurements measurement;
-    public double quantityOnHand;
+    protected int itemID;
+    protected String itemName;
+    protected int vendorID;
+    protected double salePrice;
+    protected Categories category;
+    protected Date expiration;
+    protected double purchasePrice;
+    protected Measurements measurement;
+    protected double quantityOnHand;
 
     //method to add item to database
     public void addToDB() throws SQLException {

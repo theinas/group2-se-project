@@ -8,13 +8,8 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.net.URL;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class AddItemViewController {
     //declare members to mimic item class
@@ -132,7 +127,7 @@ public class AddItemViewController {
     }
 
     //function to verify that the chosen vendor ID does not already carry this item
-    public boolean noDuplicateItems(ArrayList<Map<Integer, String>> items)
+    public boolean noDuplicateItems(List<Map<Integer, String>> items)
     {
         for(int i = 0; i <items.size();i++)
         {
@@ -148,9 +143,9 @@ public class AddItemViewController {
 
     public boolean isValid() {
         if (isNameValid(name) && isPurchasePriceValid(purchasePrice) && isSalePriceValid(salePrice)
-                && isExpirationValid(expiration) && isQuantityValid(quantityOnHand)) && noDuplicateItems(){
-            return true;
-        } else {
+                && isExpirationValid(expiration) && isQuantityValid(quantityOnHand) && noDuplicateItems(vendorItems)){
+            return true;}
+        else {
             return false;
         }
     }
@@ -166,7 +161,7 @@ public class AddItemViewController {
     public void saveValues()
     {
         //for vendor Id retrieval
-        Map<Integer, String> vendorChoice = (Map<Integer, String>) vendorIDComboBox.getSelectionModel().getSelectedItem();
+        Map<Integer, String> vendorChoice = vendorIDComboBox.getSelectionModel().getSelectedItem();
         int tempID = (Integer) vendorChoice.keySet().toArray()[0];
         //for conversion to date
         int expirationDay;

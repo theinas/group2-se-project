@@ -31,7 +31,7 @@ public class InventoryManagerViewController {
     @FXML
     public void onEditItemButtonClick() throws IOException
     {
-        Parent root = FXMLLoader.load(getClass().getResource("Edit-customer-view.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("Edit-item-view.fxml"));
         Stage window = (Stage)EditItemButton.getScene().getWindow();
         window.setScene(new Scene(root));
     }
@@ -47,7 +47,7 @@ public class InventoryManagerViewController {
     @FXML
     public void onSearchForItemButtonClick() throws IOException
     {
-        Parent root = FXMLLoader.load(getClass().getResource("Search-customer-view.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("Search-for-item-view.fxml"));
         Stage window = (Stage)SearchForItemButton.getScene().getWindow();
         window.setScene(new Scene(root));
     }

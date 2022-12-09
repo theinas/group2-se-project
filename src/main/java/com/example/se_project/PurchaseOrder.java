@@ -1,8 +1,11 @@
 package com.example.se_project;
 
+import java.util.ArrayList;
+
+//Joshua
 public class PurchaseOrder {
     int purchaseID;
-    Item item1, item2, item3, item4, item5;
+    ArrayList<Item> orderedItems = new ArrayList<>();
     Date needBy;
     int totalItems = 0;
     double quantity;

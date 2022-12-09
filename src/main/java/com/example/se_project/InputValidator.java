@@ -33,12 +33,9 @@ public class InputValidator {
         else
             return false;
     }
-    public boolean validateDate(Date date)
+    public boolean validateDate(LocalDate date)
     {
-        Instant now = Instant.now();
-        java.util.Date compare = java.util.Date.from(now);
-        java.util.Date enteredDate = new java.util.Date(date.getYear(), date.getMonth(), date.getDay());
-        if(compare.after(enteredDate))
+        if(date.isAfter(LocalDate.now()))
             return true;
         else
             return false;

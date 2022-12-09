@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.Map;
 
 public class DBConnection {
-    private final String SQL_CONNECTION = "jdbc:mysql://127.0.0.1:3306/project";
-    private final String SQL = "jdbc:mysql://127.0.0.1:3306/project?"
+    private final String SQL_CONNECTION = "jdbc:mysql://localhost:3306/project";
+    private final String SQL = "jdbc:mysql://localhost:3306/project?"
             + "allowPublicKeyRetrieval=true&useSSL=false&user=root&password=OurPassword123";
     private Connection connection;
     private Statement statement;
@@ -52,5 +52,4 @@ public class DBConnection {
     public void closeConnection() throws SQLException {
         connection.close();
     }
-
 }

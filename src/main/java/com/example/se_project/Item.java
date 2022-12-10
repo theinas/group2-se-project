@@ -44,6 +44,12 @@ public class Item {
     }
 
 
+    //Default Constructor
+    public Item()
+    {
+
+    }
+
     //get and set methods for all members
     //itemID
     public void setItemID(int itemID) {

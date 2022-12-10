@@ -6,9 +6,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class PurchaseOrder implements totalCost{
-    private String vendorBoughtFrom;
-    private ArrayList<PurchaseOrderItem> items = new ArrayList<>();
-    Date needBy;
+    protected String vendorBoughtFrom;
+    protected ArrayList<PurchaseOrderItem> items = new ArrayList<>();
+    protected Date needBy;
 
     public PurchaseOrder()
     {

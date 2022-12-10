@@ -52,11 +52,6 @@ public abstract class User {
         return role;
     }
 
-    public static String checkRole()
-    {
-        final String thisRole = role.toString();
-        return thisRole;
-    }
 
 
 }

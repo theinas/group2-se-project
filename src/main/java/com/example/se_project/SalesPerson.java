@@ -11,15 +11,6 @@ public class SalesPerson extends User{
         addToDB(lastName, firstName, password, this.getRole().toString());
     }
 
-    @Override
-    public void modify() {
-
-    }
-
-    @Override
-    public void delete() {
-
-    }
     public void addToDB(String ln, String fn, String password, String role) throws SQLException {
         String query = "INSERT INTO users(last_name, first_name, password, role) values('" + ln+ "','"+fn+"','"+password+"','"+role+"');";
 

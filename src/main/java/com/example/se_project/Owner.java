@@ -1,5 +1,3 @@
-//@Author: Inas Hamad
-
 package com.example.se_project;
 
 import java.sql.SQLException;
@@ -10,23 +8,14 @@ public class Owner extends User{
         this.setLastName(lastName);
         this.setFirstName(firstName);
         this.setRole(UserRoles.OWNER);
-        addToDB(lastName, firstName, password);
+        addToDB(role, lastName, firstName, password);
     }
 
-    @Override
-    public void modify() {
+    public void addToDB(UserRoles role, String ln, String fn, String password) throws SQLException {
+        String query = "INSERT INTO users(last_name, first_name, password, role) values('" + ln+ "','"+fn+"','"+password+"','" +role+ "');";
 
-    }
-
-    @Override
-    public void delete() {
-
-    }
-
-
-    public void addToDB(String ln, String fn, String password) throws SQLException {
-        String query = "INSERT INTO users(last_name, first_name, password) values(" + ln+ ","+fn+","+password+");";
         DBConnection connection = new DBConnection();
+
         connection.addEntryToDB(query);
         connection.closeConnection();
     }

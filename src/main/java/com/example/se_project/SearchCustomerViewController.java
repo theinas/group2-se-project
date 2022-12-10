@@ -76,7 +76,7 @@ public class SearchCustomerViewController {
     }
     @FXML
     public void onListAllCustomersButtonClick() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("List-all-customers-view.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("List-all-users-view.fxml"));
         Stage window = (Stage) fullCustomerListButton.getScene().getWindow();
         window.setScene(new Scene(root));
     }

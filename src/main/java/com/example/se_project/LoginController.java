@@ -81,6 +81,7 @@ public class LoginController {
        {
            case OWNER -> handleOwnerLogin();
            case SALES_PERSON -> handleSalesPersonLogin();
+           case ADMIN -> handleAdminLogin();
 
            case PURCHASER -> handlePurchaserLogin();
 
@@ -88,8 +89,15 @@ public class LoginController {
        }
    }
 
+    private void handleAdminLogin() throws IOException {
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Admin-view.fxml")));
+        Stage window = (Stage)loginButton.getScene().getWindow();
+        window.setScene(new Scene(root));
 
-   public UserRoles checkRole(String r)
+    }
+
+
+    public UserRoles checkRole(String r)
    {
        UserRoles role = null;
        switch (r)

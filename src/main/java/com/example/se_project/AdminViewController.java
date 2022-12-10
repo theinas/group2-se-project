@@ -20,6 +20,8 @@ public class AdminViewController {
     protected Button updateUserButton;
     @FXML
     protected Button logoutButton;
+    @FXML
+    Button searchUserButton;
 
 
 
@@ -51,6 +53,14 @@ public class AdminViewController {
     {
         Parent root = FXMLLoader.load(getClass().getResource("Login-view.fxml"));
         Stage window = (Stage)logoutButton.getScene().getWindow();
+        window.setScene(new Scene(root));
+    }
+
+    @FXML
+    public void onsearchUserButtonClick() throws IOException
+    {
+        Parent root = FXMLLoader.load(getClass().getResource("Search-user-view.fxml"));
+        Stage window = (Stage)searchUserButton.getScene().getWindow();
         window.setScene(new Scene(root));
     }
 }

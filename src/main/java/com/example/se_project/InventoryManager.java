@@ -12,15 +12,7 @@ public class InventoryManager extends User {
         addToDB(lastName, firstName, password);
     }
 
-    @Override
-    public void modify() {
 
-    }
-
-    @Override
-    public void delete() {
-
-    }
 
 
     public void addToDB(String ln, String fn, String password) throws SQLException {

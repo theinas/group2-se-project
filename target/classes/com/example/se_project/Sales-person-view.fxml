@@ -126,4 +126,9 @@
             GridPane.rowIndex="8"
     onAction="#onCreateOrderButtonClick"/>
 
+    <Button fx:id="displayAllItemsButton"
+            text ="Display All Items"
+            GridPane.columnIndex ="3"
+            GridPane.rowIndex = "8"/>
+
 </GridPane>

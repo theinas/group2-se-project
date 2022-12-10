@@ -40,4 +40,11 @@
             onAction="#onlogoutButtonClick"
     />
 
+    <Button fx:id="searchUserButton"
+            GridPane.columnIndex="1"
+            GridPane.rowIndex="2"
+            text="Search for a User Profile"
+            onAction="#onsearchUserButtonClick"
+    />
+
 </GridPane>

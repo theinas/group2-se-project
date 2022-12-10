@@ -23,8 +23,6 @@ public class AdminViewController {
     @FXML
     Button searchUserButton;
 
-
-
     @FXML
     public void onCreateUserProfileClick() throws IOException
     {

@@ -114,7 +114,6 @@ public class CreateCustomerViewController {
         }
     }
 
-
     public void updateErrorLabel(String r) {
         error.setText(r);
     }

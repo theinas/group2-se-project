@@ -1,4 +1,4 @@
-//@author Robert Tedeschi
+//@Author: Robert Tedeschi
 
 package com.example.se_project;
 
@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class UpdateUserProfileController {
+public class UpdateNonauserProfileController {
     private String errorString = "";
     private List<String> users = new ArrayList<>();
 
@@ -33,11 +33,11 @@ public class UpdateUserProfileController {
     @FXML
     protected Button backToMainButton;
     @FXML
+    protected Button logoutButton;
+    @FXML
     protected ComboBox usersComboBox;
     @FXML
     protected Label error;
-    @FXML
-    protected Button logoutButton;
 
     public void initialize() throws SQLException {
         getUsersFromDB();
@@ -47,7 +47,7 @@ public class UpdateUserProfileController {
 
     public void getUsersFromDB() throws SQLException {
         DBConnection connection = new DBConnection();
-        List<Map<String, Object>> results = connection.getResults("select last_name from users;");
+        List<Map<String, Object>> results = connection.getResults("select last_name from users where role != 'ADMIN' && role != 'OWNER';");
         addUsersToList(results);
         connection.closeConnection();
 
@@ -106,7 +106,7 @@ public class UpdateUserProfileController {
     @FXML
     public void onBackToMainButtonClick() throws IOException
     {
-        Parent root = FXMLLoader.load(getClass().getResource("Owner-view.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("Admin-view.fxml"));
         Stage window = (Stage) backToMainButton.getScene().getWindow();
         window.setScene(new Scene(root));
     }

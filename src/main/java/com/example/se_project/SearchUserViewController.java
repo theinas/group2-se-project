@@ -1,5 +1,3 @@
-//@Author: Inas Hamad
-
 package com.example.se_project;
 
 import javafx.fxml.FXML;
@@ -14,7 +12,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
-public class SearchCustomerViewController {
+public class SearchUserViewController {
     private ToggleGroup toggle = new ToggleGroup();
     private List<Map<String, Object>> results;
 
@@ -75,7 +73,7 @@ public class SearchCustomerViewController {
         window.setScene(new Scene(root));
     }
     @FXML
-    public void onListAllCustomersButtonClick() throws IOException {
+    public void onListAllUsersButtonClick() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("List-all-users-view.fxml"));
         Stage window = (Stage) fullCustomerListButton.getScene().getWindow();
         window.setScene(new Scene(root));

@@ -1,13 +1,15 @@
+//@Author: Robert Tedeschi
+
 package com.example.se_project;
 
 import java.sql.SQLException;
 
-public class Owner extends User{
+public class Admin extends User{
 
-    public Owner(String lastName, String firstName,String password) throws SQLException {
+    public Admin(String lastName, String firstName,String password) throws SQLException {
         this.setLastName(lastName);
         this.setFirstName(firstName);
-        this.setRole(UserRoles.OWNER);
+        this.setRole(UserRoles.ADMIN);
         addToDB(role, lastName, firstName, password);
     }
 
@@ -19,6 +21,4 @@ public class Owner extends User{
         connection.addEntryToDB(query);
         connection.closeConnection();
     }
-
-
 }

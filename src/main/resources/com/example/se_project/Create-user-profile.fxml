@@ -63,6 +63,13 @@
            textFill="red"
     />
 
+    <Button fx:id="logoutButton"
+            GridPane.columnIndex="10"
+            GridPane.rowIndex="10"
+            text="Logout"
+            onAction="#onlogoutButtonClick"
+    />
+
 
 
 

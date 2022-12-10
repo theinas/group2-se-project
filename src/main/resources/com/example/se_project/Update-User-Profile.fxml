@@ -20,5 +20,52 @@
               GridPane.rowIndex="0"
               onAction="#onUserComboBoxValueChanged"/>
 
+    <Text text="First name:"
+          GridPane.columnIndex="0"
+          GridPane.rowIndex="1"/>
+    <TextField fx:id="fNameTextField"
+               GridPane.columnIndex="1"
+               GridPane.rowIndex="1"/>
+
+    <Text text="Last name:"
+          GridPane.columnIndex="0"
+          GridPane.rowIndex="2"/>
+    <TextField fx:id="lNameTextField"
+               GridPane.columnIndex="1"
+               GridPane.rowIndex="2"/>
+
+    <Text text="Password:"
+          GridPane.columnIndex="0"
+          GridPane.rowIndex="3"/>
+    <TextField fx:id="passTextField"
+               GridPane.columnIndex="1"
+               GridPane.rowIndex="3"/>
+
+
+    <Button fx:id="UpdateUserButton"
+            GridPane.columnIndex="0"
+            GridPane.rowIndex="5"
+            text="Update"
+            onAction="#UpdateUserButtonOnClick"/>
+
+    <Button fx:id="backToMainButton"
+            text="Back to main menu"
+            GridPane.columnIndex="0"
+            GridPane.rowIndex="6"
+            onAction="#onBackToMainButtonClick"/>
+
+    <Label fx:id="error"
+           GridPane.columnIndex="1"
+           GridPane.rowIndex="5"
+           textFill="red"
+    />
+
+    <Button fx:id="logoutButton"
+            GridPane.columnIndex="10"
+            GridPane.rowIndex="10"
+            text="Logout"
+            onAction="#onlogoutButtonClick"
+    />
+
 
 </GridPane>

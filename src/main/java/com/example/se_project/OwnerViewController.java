@@ -13,15 +13,24 @@ import java.io.IOException;
 
 public class OwnerViewController {
     @FXML
-    Button createCustomerButton;
-    @FXML
     Button editCustomerButton;
     @FXML
     Button deleteCustomerButton;
     @FXML
     Button searchCustomerButton;
     @FXML
+    Button createCustomerButton;
+    @FXML
     Button createUserButton;
+    @FXML
+    Button updateUserButton;
+    @FXML
+    Button deleteUserButton;
+    @FXML
+    Button logoutButton;
+    @FXML
+    Button searchUserButton;
+
     @FXML
     public void onCreateCustomerButtonClick() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("Create-customer-view.fxml"));
@@ -52,6 +61,7 @@ public class OwnerViewController {
         Stage window = (Stage)searchCustomerButton.getScene().getWindow();
         window.setScene(new Scene(root));
     }
+
     @FXML
     public void onCreateUserProfileClick() throws IOException
     {
@@ -59,6 +69,41 @@ public class OwnerViewController {
         Stage window = (Stage)createUserButton.getScene().getWindow();
         window.setScene(new Scene(root));
     }
+
+    @FXML
+    public void onUpdateUserProfileClick() throws IOException
+    {
+        Parent root = FXMLLoader.load(getClass().getResource("Update-user-profile.fxml"));
+        Stage window = (Stage)updateUserButton.getScene().getWindow();
+        window.setScene(new Scene(root));
+    }
+
+    @FXML
+    public void onDeleteUserButtonClick() throws IOException
+    {
+        Parent root = FXMLLoader.load(getClass().getResource("Delete-user-profile.fxml"));
+        Stage window = (Stage)deleteUserButton.getScene().getWindow();
+        window.setScene(new Scene(root));
+    }
+
+
+
+    @FXML
+    public void onlogoutButtonClick() throws IOException
+    {
+        Parent root = FXMLLoader.load(getClass().getResource("Login-view.fxml"));
+        Stage window = (Stage)logoutButton.getScene().getWindow();
+        window.setScene(new Scene(root));
+    }
+
+    @FXML
+    public void onsearchUserButtonClick() throws IOException
+    {
+        Parent root = FXMLLoader.load(getClass().getResource("Search-user-view.fxml"));
+        Stage window = (Stage)searchUserButton.getScene().getWindow();
+        window.setScene(new Scene(root));
+    }
+
 
 }
 

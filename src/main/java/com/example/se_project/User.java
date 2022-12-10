@@ -11,8 +11,6 @@ public abstract class User {
     protected String password;
     protected UserRoles role;
 
-    public abstract void modify();
-    public abstract void delete();
 
     public void setLastName(String lastName) {
         this.lastName = lastName;

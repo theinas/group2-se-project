@@ -1,30 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-
-
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Text?>
 <GridPane xmlns="http://javafx.com/javafx"
           xmlns:fx="http://javafx.com/fxml"
-          fx:controller="com.example.se_project.CreateUserProfileController"
+          fx:controller="com.example.se_project.UpdateNonauserProfileController"
           prefHeight="400.0" prefWidth="600.0">
     <padding><Insets top="25" right="25" bottom="10" left="25"/></padding>
 
-    <Text text="Create a user profile:"
-          GridPane.rowIndex="0"
-          GridPane.columnIndex="0"/>
+    <Text GridPane.rowIndex="0"
+          GridPane.columnIndex="0"
+          text="Select User to edit: "/>
+    <ComboBox fx:id="usersComboBox"
+              GridPane.columnIndex="1"
+              GridPane.rowIndex="0"
+              onAction="#onUserComboBoxValueChanged"/>
 
-    <Text text="First Name:"
+    <Text text="First name:"
           GridPane.columnIndex="0"
           GridPane.rowIndex="1"/>
     <TextField fx:id="fNameTextField"
                GridPane.columnIndex="1"
                GridPane.rowIndex="1"/>
 
-    <Text text="Last Name:"
+    <Text text="Last name:"
           GridPane.columnIndex="0"
           GridPane.rowIndex="2"/>
     <TextField fx:id="lNameTextField"
@@ -38,39 +43,30 @@
                GridPane.columnIndex="1"
                GridPane.rowIndex="3"/>
 
-    <Text text="Role: "
-          GridPane.columnIndex="0"
-          GridPane.rowIndex="4"/>
-    <ComboBox fx:id="roleComboBox"
-               GridPane.columnIndex="1"
-               GridPane.rowIndex="4"/>
 
-    <Button fx:id="createUserButton"
+    <Button fx:id="UpdateUserButton"
             GridPane.columnIndex="0"
-            GridPane.rowIndex="6"
-            text="Create"
-            onAction="#createUserButtonOnClick"/>
+            GridPane.rowIndex="5"
+            text="Update"
+            onAction="#UpdateUserButtonOnClick"/>
 
     <Button fx:id="backToMainButton"
             text="Back to main menu"
             GridPane.columnIndex="0"
-            GridPane.rowIndex="7"
+            GridPane.rowIndex="6"
             onAction="#onBackToMainButtonClick"/>
 
     <Label fx:id="error"
            GridPane.columnIndex="1"
-           GridPane.rowIndex="6"
+           GridPane.rowIndex="5"
            textFill="red"
     />
-
     <Button fx:id="logoutButton"
             GridPane.columnIndex="10"
             GridPane.rowIndex="10"
             text="Logout"
             onAction="#onlogoutButtonClick"
     />
-
-
 
 
 </GridPane>

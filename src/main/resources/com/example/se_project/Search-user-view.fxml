@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Text?>
+
+<GridPane xmlns="http://javafx.com/javafx"
+          xmlns:fx="http://javafx.com/fxml"
+          fx:controller="com.example.se_project.SearchUserViewController"
+          prefHeight="400.0" prefWidth="600.0">
+    <padding><Insets top="25" right="25" bottom="10" left="25"/></padding>
+    <Text>Search for a user</Text>
+    <Text text="Search by:"
+          GridPane.columnIndex="0"
+          GridPane.rowIndex="1"/>
+    <RadioButton fx:id="byIdRadioButton"
+                 text="ID"
+                 GridPane.columnIndex="1"
+                 GridPane.rowIndex="1"/>
+    <RadioButton fx:id="byNameRadioButton"
+                 text="Name"
+                 GridPane.columnIndex="2"
+                 GridPane.rowIndex="1"/>
+
+    <TextField fx:id="searchTextField"
+               GridPane.columnIndex="1"
+               GridPane.rowIndex="2"/>
+    <Button fx:id="searchButton"
+            text="Search"
+            GridPane.columnIndex="2"
+            GridPane.rowIndex="2"
+            onAction="#onSearchButtonClick"/>
+    <Button fx:id="fullUserListButton"
+            text="See list of users"
+            GridPane.columnIndex="3"
+            GridPane.rowIndex="2"
+            onAction="#onListAllUsersButtonClick"/>
+
+    <Label fx:id="idLabel"
+           GridPane.columnIndex="1"
+           GridPane.rowIndex="4"/>
+    <Label fx:id="idValueLabel"
+           GridPane.columnIndex="2"
+           GridPane.rowIndex="4"/>
+
+    <Label fx:id="companyLabel"
+           GridPane.columnIndex="1"
+           GridPane.rowIndex="5"/>
+    <Label fx:id="companyValueLabel"
+           GridPane.columnIndex="2"
+           GridPane.rowIndex="5"/>
+
+    <Label fx:id="streetLabel"
+           GridPane.columnIndex="1"
+           GridPane.rowIndex="6"/>
+    <Label fx:id="streetValueLabel"
+           GridPane.columnIndex="2"
+           GridPane.rowIndex="6"/>
+
+    <Label fx:id="cityLabel"
+           GridPane.columnIndex="1"
+           GridPane.rowIndex="7"/>
+    <Label fx:id="cityValueLabel"
+           GridPane.columnIndex="2"
+           GridPane.rowIndex="7"/>
+
+    <Label fx:id="stateLabel"
+           GridPane.columnIndex="1"
+           GridPane.rowIndex="8"/>
+    <Label fx:id="stateValueLabel"
+           GridPane.columnIndex="2"
+           GridPane.rowIndex="8"/>
+
+    <Label fx:id="balanceLabel"
+           GridPane.columnIndex="1"
+           GridPane.rowIndex="9"/>
+    <Label fx:id="balanceValueLabel"
+           GridPane.columnIndex="2"
+           GridPane.rowIndex="9"/>
+
+    <Label fx:id="lastPaidLabel"
+           GridPane.columnIndex="1"
+           GridPane.rowIndex="10"/>
+    <Label fx:id="lastPaidValueLabel"
+           GridPane.columnIndex="2"
+           GridPane.rowIndex="10"/>
+
+    <Label fx:id="lastOrderLabel"
+           GridPane.columnIndex="1"
+           GridPane.rowIndex="11"/>
+    <Label fx:id="lastOrderValueLabel"
+           GridPane.columnIndex="2"
+           GridPane.rowIndex="11"/>
+
+    <Button fx:id="backToMainButton"
+            text="Back to menu"
+            GridPane.columnIndex="3"
+            GridPane.rowIndex="12"
+            onAction="#onBackToMainButtonClick"/>
+</GridPane>

@@ -45,11 +45,41 @@
             text="Search for a Customer Profile"
             onAction="#onSearchCustomerButtonClick"
     />
+
     <Button fx:id="createUserButton"
             GridPane.columnIndex="0"
             GridPane.rowIndex="3"
             text="Create User Profile"
             onAction="#onCreateUserProfileClick"
     />
+
+    <Button fx:id="updateUserButton"
+            GridPane.columnIndex="1"
+            GridPane.rowIndex="3"
+            text="Update User Profile"
+            onAction="#onUpdateUserProfileClick"
+    />
+
+    <Button fx:id="deleteUserButton"
+            GridPane.columnIndex="0"
+            GridPane.rowIndex="4"
+            text="Delete User Profile"
+            onAction="#onDeleteUserButtonClick"
+    />
+
+    <Button fx:id="searchUserButton"
+            GridPane.columnIndex="1"
+            GridPane.rowIndex="4"
+            text="Search for a User Profile"
+            onAction="#onsearchUserButtonClick"
+    />
+
+    <Button fx:id="logoutButton"
+            GridPane.columnIndex="10"
+            GridPane.rowIndex="10"
+            text="Logout"
+            onAction="#onlogoutButtonClick"
+    />
+
 
 </GridPane>

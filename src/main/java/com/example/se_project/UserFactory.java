@@ -11,6 +11,9 @@ public class UserFactory {
             case OWNER -> {
                 return new Owner(lastName, firstName, password);
             }
+            case ADMIN ->{
+                return new Admin(lastName, firstName, password);
+            }
         }
         return null;
     }

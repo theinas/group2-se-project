@@ -1,26 +1,22 @@
-//@author Robert Tedeschi
+//@Author: Robert Tedeschi
 
 package com.example.se_project;
 
-
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.net.URL;
 import java.sql.SQLException;
-import java.util.ResourceBundle;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
+public class CreatenonauserProfileController {
 
-
-public class CreateUserProfileController{
     private String errorString = "";
     private String lName;
     private String fName;
@@ -47,13 +43,17 @@ public class CreateUserProfileController{
 
 
     public void initialize() {
-        roleComboBox.getItems().addAll(UserRoles.values());
+
+        roleComboBox.getItems().add(UserRoles.ACCOUNTANT);
+        roleComboBox.getItems().add(UserRoles.SALES_PERSON);
+        roleComboBox.getItems().add(UserRoles.INVENTORY_MANAGER);
+        roleComboBox.getItems().add(UserRoles.PURCHASER);
     }
 
     @FXML
     public void onBackToMainButtonClick() throws IOException
     {
-        Parent root = FXMLLoader.load(getClass().getResource("Owner-view.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("Admin-view.fxml"));
         Stage window = (Stage) backToMainButton.getScene().getWindow();
         window.setScene(new Scene(root));
     }
@@ -116,7 +116,9 @@ public class CreateUserProfileController{
         }
     }
 
-    public void updateErrorLabel(String r) {error.setText(r);}
+    public void updateErrorLabel(String r) {
+        error.setText(r);
+    }
 
     @FXML
     public void onlogoutButtonClick() throws IOException

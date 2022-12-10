@@ -5,12 +5,10 @@
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 
-
-
 <GridPane xmlns="http://javafx.com/javafx"
-          xmlns:fx="http://javafx.com/fxml"
-          fx:controller="com.example.se_project.CreateUserProfileController"
-          prefHeight="400.0" prefWidth="600.0">
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.se_project.CreatenonauserProfileController"
+            prefHeight="400.0" prefWidth="600.0">
     <padding><Insets top="25" right="25" bottom="10" left="25"/></padding>
 
     <Text text="Create a user profile:"
@@ -42,8 +40,8 @@
           GridPane.columnIndex="0"
           GridPane.rowIndex="4"/>
     <ComboBox fx:id="roleComboBox"
-               GridPane.columnIndex="1"
-               GridPane.rowIndex="4"/>
+              GridPane.columnIndex="1"
+              GridPane.rowIndex="4"/>
 
     <Button fx:id="createUserButton"
             GridPane.columnIndex="0"
@@ -69,8 +67,5 @@
             text="Logout"
             onAction="#onlogoutButtonClick"
     />
-
-
-
 
 </GridPane>

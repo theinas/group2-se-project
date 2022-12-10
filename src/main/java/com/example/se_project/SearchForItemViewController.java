@@ -12,6 +12,8 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
+import static com.example.se_project.LoginController.FINAL_ROLE;
+
 public class SearchForItemViewController {
     private ToggleGroup toggle = new ToggleGroup();
     private List<Map<String, Object>> DBresults;
@@ -74,17 +76,17 @@ public class SearchForItemViewController {
     @FXML
     public void onBackToMainButtonClick() throws IOException
     {
-        if(User.checkRole().equals("OWNER")){
+        if(FINAL_ROLE.equals("OWNER")){
         Parent root = FXMLLoader.load(getClass().getResource("Owner-view.fxml"));
         Stage window = (Stage) backToMainButton.getScene().getWindow();
         window.setScene(new Scene(root));}
 
-        else if (User.checkRole().equals("INVENTORY_MANAGER")){
+        else if (FINAL_ROLE.equals("INVENTORY_MANAGER")){
         Parent root = FXMLLoader.load(getClass().getResource("InventoryManager-view.fxml"));
         Stage window = (Stage) backToMainButton.getScene().getWindow();
         window.setScene(new Scene(root));}
 
-        else if (User.checkRole().equals("PURCHASER")){
+        else if (FINAL_ROLE.equals("PURCHASER")){
         Parent root = FXMLLoader.load(getClass().getResource("Purchaser-view.fxml"));
         Stage window = (Stage) backToMainButton.getScene().getWindow();
         window.setScene(new Scene(root));}

@@ -10,6 +10,11 @@ public class PurchaseOrderItem {
         this.amount = amount;
     }
 
+    public double getSubTotal()
+    {
+        double sub = this.item.getPurchasePrice() * this.amount;
+        return sub;
+    }
     public Item getItem() {
         return item;
     }

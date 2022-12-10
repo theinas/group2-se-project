@@ -8,7 +8,7 @@ import java.util.Map;
 public class DBConnection {
     private final String SQL_CONNECTION = "jdbc:mysql://localhost:3306/project";
     private final String SQL = "jdbc:mysql://localhost:3306/project?"
-            + "allowPublicKeyRetrieval=true&useSSL=false&user=root&password=OurPassword123";
+            + "allowPublicKeyRetrieval=true&useSSL=false&user=root&password=Arup@3134";
     private Connection connection;
     private Statement statement;
 

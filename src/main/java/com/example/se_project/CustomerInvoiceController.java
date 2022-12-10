@@ -237,29 +237,64 @@ public class CustomerInvoiceController implements Initializable {
         DBConnection connection = new DBConnection();
         List<Map<String, Object>> customer_order_result = connection.getResults("select * from customer_order where customer_id = '" + customer_id + "';");
         connection.closeConnection();
+        int size;
 
-        int order_id =  ( int)customer_order_result.get(0).get("ID");
-        int item_id =  ( int)customer_order_result.get(0).get("item_id");
-        String order_date_val =  customer_order_result.get(0).get("order_date").toString();
+        if (customer_order_result.size()<5){
 
-        String needed_by =  customer_order_result.get(0).get("need_by").toString();
-        double item_quantity =  (double)customer_order_result.get(0).get("quantity");
-        double subtotal =  ( double)customer_order_result.get(0).get("subtotal");
-        double total_val =  ( double)customer_order_result.get(0).get("final_total");
+            size= customer_order_result.size();
+        } else{
+            size =4;
+        }
 
+        for(int i =0; i<size;i++){
 
-        String setInvoiceDate = new SimpleDateFormat("MM/dd/yyyy").format(Calendar.getInstance().getTime());
-        invoice_date.setText(setInvoiceDate);
-        order_date.setText(order_date_val);
-        customer_order_no.setText(Integer.toString(order_id));
-        lbltotal.setText(Double.toString(total_val) );
+        int order_id =  ( int)customer_order_result.get(i).get("ID");
+        int item_id =  ( int)customer_order_result.get(i).get("item_id");
+        String order_date_val =  customer_order_result.get(i).get("order_date").toString();
 
-        item1.setText(getItemName(item_id));
-        need1.setText(needed_by);
-        q1.setText(Double.toString(item_quantity));
-        c1.setText(Double.toString(total_val));
+        String needed_by =  customer_order_result.get(i).get("need_by").toString();
+        double item_quantity =  (double)customer_order_result.get(i).get("quantity");
+        double subtotal =  ( double)customer_order_result.get(i).get("subtotal");
+        double total_val =  ( double)customer_order_result.get(i).get("final_total");
 
+        if(i==0){
+            String setInvoiceDate = new SimpleDateFormat("MM/dd/yyyy").format(Calendar.getInstance().getTime());
+            invoice_date.setText(setInvoiceDate);
+            order_date.setText(order_date_val);
+            customer_order_no.setText(Integer.toString(order_id));
+            lbltotal.setText(Double.toString(total_val) );
 
+            item1.setText(getItemName(item_id));
+            need1.setText(needed_by);
+            q1.setText(Double.toString(item_quantity));
+            c1.setText(Double.toString(total_val));
+        }else if(i==1){
+            item2.setText(getItemName(item_id));
+            need2.setText(needed_by);
+            q2.setText(Double.toString(item_quantity));
+            c2.setText(Double.toString(total_val));
+
+        }else if(i==2){
+            item3.setText(getItemName(item_id));
+            need3.setText(needed_by);
+            q3.setText(Double.toString(item_quantity));
+            c3.setText(Double.toString(total_val));
+
+        }else if(i==3){
+            item4.setText(getItemName(item_id));
+            need4.setText(needed_by);
+            q4.setText(Double.toString(item_quantity));
+            c4.setText(Double.toString(total_val));
+
+        }else if(i==4){
+
+            item5.setText(getItemName(item_id));
+            need5.setText(needed_by);
+            q5.setText(Double.toString(item_quantity));
+            c5.setText(Double.toString(total_val));
+        }
+
+        }
 
     }
 

@@ -249,7 +249,7 @@ public class Vendor_CustomerController implements Initializable {
                 System.out.println(e.toString());
             }
             int check = 0;
-            if (ErrorController.nameChecker(name, 20, "Company Full Name") && ErrorController.strChecker(address, 20, "Street Address") && ErrorController.nameChecker(city, 20, "City") && state != null && ErrorController.phnChecker(phone) && ErrorController.phnChecker(phone) && ErrorController.numChecker(balance, "Balance") && ErrorController.numChecker(lastPaid, "Last Paid") && ErrorController.pastChecker(lastdate) && ErrorController.pastChecker(sessional)) {
+            if (ErrorController.nameChecker(name, 20, "Company Full Name") && ErrorController.strChecker(address, 20, "Street Address") && ErrorController.nameChecker(city, 20, "City") && state != null && ErrorController.phnChecker(phone) && ErrorController.phnChecker(phone) && ErrorController.numChecker(balance, "Balance") && ErrorController.numChecker(lastPaid, "Last Paid") && ErrorController.pastChecker(sessional)) {
                 check = 1;
             }
 

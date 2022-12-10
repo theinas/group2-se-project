@@ -1,5 +1,3 @@
-//@Author: Inas Hamad
-
 package com.example.se_project;
 
 

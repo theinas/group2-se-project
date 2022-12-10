@@ -10,22 +10,24 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /*
@@ -36,7 +38,7 @@ this class get data from database and create its invoice by using panes and labe
  */
 public class CustomerInvoiceController implements Initializable {
 
-
+    private List<String> customers = new ArrayList<>();
     @FXML
     private ListView<String> listInvoices;
 
@@ -147,10 +149,18 @@ public class CustomerInvoiceController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        con = new DB_Connection();
-        connection = con.getConnection();
+//        con = new DB_Connection();
+//        connection = con.getConnection();
 
         paneRecipt.setVisible(false);
+
+        try {
+            getCustomersFromDB();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        comboSelect.getItems().addAll(customers);
+        comboInvoices.getItems().addAll(customers);
 
 
         comboSelect.setOnAction(event -> {
@@ -159,55 +169,186 @@ public class CustomerInvoiceController implements Initializable {
 
         btnCreate.setOnAction(event -> {
             paneRecipt.setVisible(true);
-            gettingDataOfInvoice();
+            try {
+                gettingDataOfInvoice();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         });
 
         btnBack.setOnAction(event -> {
-            try {
-                Stage stage = new Stage();  // go to dashboard if information is correct
-                FXMLLoader loader = new FXMLLoader();
-                Pane root = loader.load(getClass().getResource("Dashboard.fxml").openStream());
-                DashboardController Msg = (DashboardController) loader.getController();
-                Scene scene = new Scene(root);
-                scene.getStylesheets().setAll(
-                        getClass().getResource("style.css").toExternalForm()
-                );
-                stage.setScene(scene);
-                stage.show();
-                ((Node) event.getSource()).getScene().getWindow().hide();
 
-            } catch (Exception ex) {
-                System.out.println(ex);
+            Parent root = null;
+            try {
+                root = FXMLLoader.load(getClass().getResource("Account-view.fxml"));
+            } catch (IOException e) {
+                e.printStackTrace();
             }
+            Stage window = (Stage) btnBack.getScene().getWindow();
+            window.setScene(new Scene(root));
+//            try {
+//                Stage stage = new Stage();  // go to dashboard if information is correct
+//                FXMLLoader loader = new FXMLLoader();
+//                Pane root = loader.load(getClass().getResource("Account-view.fxml").openStream());
+//                DashboardController Msg = (DashboardController) loader.getController();
+//                Scene scene = new Scene(root);
+//                scene.getStylesheets().setAll(
+//                        getClass().getResource("style.css").toExternalForm()
+//                );
+//                stage.setScene(scene);
+//                stage.show();
+//                ((Node) event.getSource()).getScene().getWindow().hide();
+//
+//            } catch (Exception ex) {
+//                System.out.println(ex);
+//            }
         });
 
 
     }
 
-    public void gettingDataOfInvoice() {
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM/dd/yyyy");
-        LocalDateTime now = LocalDateTime.now();
-        try {
+    public void getCustomersFromDB() throws SQLException {
+        DBConnection connection = new DBConnection();
+        List<Map<String, Object>> results = connection.getResults("select company_name from customer;");
+        addCustomersToList(results);
+        connection.closeConnection();
 
+    }
 
-            String query = "Select * from distributer.customerinvoice";
-            Statement s = connection.createStatement();
-            ResultSet rs = s.executeQuery(query);
-            int temp = 0;
-            while (rs.next()) {
-                temp = Integer.parseInt(rs.getString(1));
-            }
-            invoice_id.setText(++temp + "");
-
-
-            s = connection.createStatement();
-            query = "INSERT INTO distributer.customerinvoice(customerorderid, invoicedate, orderdate) VALUES ('" + customer_order_no.getText() + "','" + dtf.format(now) + "','" + order_date.getText() + "'  )";
-            s.execute(query);
-
-
-        } catch (Exception e) {
-            System.out.println(e.toString());
+    public void addCustomersToList(List<Map<String, Object>> results) {
+        for (int i = 0; i < results.size(); i++) {
+            customers.add(results.get(i).get("company_name").toString());
         }
+    }
+
+    public String getItemName(int item_id) throws SQLException {
+
+        DBConnection connection = new DBConnection();
+        List<Map<String, Object>> item_result = connection.getResults("select * from item where ID = '" + item_id + "';");
+        connection.closeConnection();
+
+        String item_name =  item_result.get(0).get("name").toString();
+        return item_name;
+
+    }
+
+    public void setInvoiceDetails(int customer_id) throws SQLException {
+
+        DBConnection connection = new DBConnection();
+        List<Map<String, Object>> customer_order_result = connection.getResults("select * from customer_order where customer_id = '" + customer_id + "';");
+        connection.closeConnection();
+        int size;
+
+        if (customer_order_result.size()<5){
+
+            size= customer_order_result.size();
+        } else{
+            size =4;
+        }
+
+        for(int i =0; i<size;i++){
+
+        int order_id =  ( int)customer_order_result.get(i).get("ID");
+        int item_id =  ( int)customer_order_result.get(i).get("item_id");
+        String order_date_val =  customer_order_result.get(i).get("order_date").toString();
+
+        String needed_by =  customer_order_result.get(i).get("need_by").toString();
+        double item_quantity =  (double)customer_order_result.get(i).get("quantity");
+        double subtotal =  ( double)customer_order_result.get(i).get("subtotal");
+        double total_val =  ( double)customer_order_result.get(i).get("final_total");
+
+        if(i==0){
+            String setInvoiceDate = new SimpleDateFormat("MM/dd/yyyy").format(Calendar.getInstance().getTime());
+            invoice_date.setText(setInvoiceDate);
+            order_date.setText(order_date_val);
+            customer_order_no.setText(Integer.toString(order_id));
+            lbltotal.setText(Double.toString(total_val) );
+
+            item1.setText(getItemName(item_id));
+            need1.setText(needed_by);
+            q1.setText(Double.toString(item_quantity));
+            c1.setText(Double.toString(total_val));
+        }else if(i==1){
+            item2.setText(getItemName(item_id));
+            need2.setText(needed_by);
+            q2.setText(Double.toString(item_quantity));
+            c2.setText(Double.toString(total_val));
+
+        }else if(i==2){
+            item3.setText(getItemName(item_id));
+            need3.setText(needed_by);
+            q3.setText(Double.toString(item_quantity));
+            c3.setText(Double.toString(total_val));
+
+        }else if(i==3){
+            item4.setText(getItemName(item_id));
+            need4.setText(needed_by);
+            q4.setText(Double.toString(item_quantity));
+            c4.setText(Double.toString(total_val));
+
+        }else if(i==4){
+
+            item5.setText(getItemName(item_id));
+            need5.setText(needed_by);
+            q5.setText(Double.toString(item_quantity));
+            c5.setText(Double.toString(total_val));
+        }
+
+        }
+
+    }
+
+
+    public void gettingDataOfInvoice() throws SQLException {
+
+        DBConnection connection = new DBConnection();
+        List<Map<String, Object>> results = connection.getResults("select * from customer where company_name = '" + comboSelect.getValue().toString() + "';");
+        connection.closeConnection();
+//
+        int cid = (int) results.get(0).get("ID");
+        setInvoiceDetails(cid);
+
+        String customer_id =  results.get(0).get("company_name").toString();
+
+//        List<Map<String, Object>> customer_order_result = connection.getResults("select * from customer_order where customer_id = '" + cid + "';");
+//
+////
+//
+//
+//        String order_date_val =  customer_order_result.get(0).get("order_date").toString();
+//        String order_no =  customer_order_result.get(0).get("id").toString();
+////
+////        String final_total =  customer_order_result.get(0).get("final_total").toString();
+//
+//        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+//        LocalDateTime now = LocalDateTime.now();
+
+
+
+
+
+//        try {
+//
+//
+//            String query = "Select * from distributer.customerinvoice";
+//            Statement s = connection.createStatement();
+//            ResultSet rs = s.executeQuery(query);
+//            int temp = 0;
+//            while (rs.next()) {
+//                temp = Integer.parseInt(rs.getString(1));
+//            }
+//            invoice_id.setText(++temp + "");
+//            invoice_date.setText(String.valueOf(now));
+//
+//
+//            s = connection.createStatement();
+//            query = "INSERT INTO distributer.customerinvoice(customerorderid, invoicedate, orderdate) VALUES ('" + customer_order_no.getText() + "','" + dtf.format(now) + "','" + order_date.getText() + "'  )";
+//            s.execute(query);
+//
+//
+//        } catch (Exception e) {
+//            System.out.println(e.toString());
+//        }
     }
 
     public void getData(String customer) {
@@ -224,6 +365,11 @@ public class CustomerInvoiceController implements Initializable {
         } catch (Exception e) {
             System.out.println(e.toString());
         }
+    }
+
+    @FXML
+    public void customerValueChanged() throws SQLException {
+        String customer_name = comboSelect.getValue().toString();
     }
 
 

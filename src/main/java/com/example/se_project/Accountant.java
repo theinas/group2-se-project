@@ -11,17 +11,6 @@ public class Accountant extends User{
         addToDB(lastName, firstName, password);
     }
 
-    @Override
-    public void modify() {
-
-    }
-
-    @Override
-    public void delete() {
-
-    }
-
-
     public void addToDB(String ln, String fn, String password) throws SQLException {
         String query = "INSERT INTO users(last_name, first_name, password) values(" + ln+ ","+fn+","+password+");";
         DBConnection connection = new DBConnection();

@@ -1,24 +1,24 @@
 package com.example.se_project;
-
+//Joshua
 import java.sql.SQLException;
 
 //declare class item with all necessary members
 public class Item {
     //required members of item class
-    public int itemID;
-    public String itemName;
-    public int vendorID;
-    public double salePrice;
-    Categories category;
-    public Date expiration;
-    public double purchasePrice;
-    Measurements measurement;
-    public double quantityOnHand;
+    protected int itemID;
+    protected String itemName;
+    protected int vendorID;
+    protected double salePrice;
+    protected Categories category;
+    protected Date expiration;
+    protected double purchasePrice;
+    protected Measurements measurement;
+    protected double quantityOnHand;
 
     //method to add item to database
     public void addToDB() throws SQLException {
-        String query = "INSERT INTO item(ID, name, vendor_id, selling_price, category, expiration," +
-                "purchase_price, measurement_unit, quantity_available) values('"+ itemID + "','"+ itemName+ "','"+
+        String query = "INSERT INTO item(name, vendor_id, selling_price, category, expiration," +
+                "purchase_price, measurement_unit, quantity_available) values('" + "','"+ itemName+ "','"+
                 vendorID + "','"+ salePrice+ "','"+ category + "','" + expiration + "'.'" + purchasePrice +
                 "','" + measurement + "','" + quantityOnHand + "');'";
         DBConnection connection = new DBConnection();
@@ -29,10 +29,10 @@ public class Item {
     }
 
     //constructor with all fields filled out
-    Item(int itemID, int vendorID,double salePrice, Categories category, Date expiration,
+    Item(String itemName, int vendorID,double salePrice, Categories category, Date expiration,
          double purchasePrice, Measurements measurement, double quantityOnHand) throws SQLException
     {
-        this.itemID = itemID;
+        this.itemName = itemName;
         this.vendorID = vendorID;
         this.salePrice = salePrice;
         this.category = category;
@@ -43,19 +43,11 @@ public class Item {
         addToDB();
     }
 
-    //constructor with only item name
-    Item(String itemName) throws SQLException
-    {
-        this.itemName = itemName;
-        addToDB();
-    }
 
-    //constructor with only item name and vendorID
-    Item(String itemName, int vendorID) throws SQLException
+    //Default Constructor
+    public Item()
     {
-        this.itemName = itemName;
-        this.vendorID = vendorID;
-        addToDB();
+
     }
 
     //get and set methods for all members

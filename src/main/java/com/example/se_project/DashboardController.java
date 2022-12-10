@@ -59,6 +59,9 @@ public class DashboardController implements Initializable {
     @FXML
     private Button btnCustomerProfile;
 
+    @FXML
+    private Button returnToMainButton;
+
     static boolean Disable = true;
 
     DB_Connection con;

@@ -18,6 +18,10 @@ public class OwnerViewController {
     Button deleteCustomerButton;
     @FXML
     Button searchCustomerButton;
+    //added display all items button that is common to every user as well as GUI interface
+    @FXML
+    Button DisplayAllItemsButton;
+
     @FXML
     Button createCustomerButton;
     @FXML
@@ -105,5 +109,13 @@ public class OwnerViewController {
     }
 
 
+
+    @FXML
+    public void onDisplayAllItemsButtonClick() throws IOException
+    {
+        Parent root = FXMLLoader.load(getClass().getResource("Display-all-items-view.fxml"));
+        Stage window = (Stage)DisplayAllItemsButton.getScene().getWindow();
+        window.setScene(new Scene(root));
+    }
 }
 

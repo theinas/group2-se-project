@@ -9,7 +9,7 @@ public abstract class User {
     protected String firstName;
     protected int ID;
     protected String password;
-    protected UserRoles role;
+    public static UserRoles role;
 
 
     public void setLastName(String lastName) {
@@ -50,6 +50,12 @@ public abstract class User {
 
     public UserRoles getRole() {
         return role;
+    }
+
+    public static String checkRole()
+    {
+        final String thisRole = role.toString();
+        return thisRole;
     }
 
 

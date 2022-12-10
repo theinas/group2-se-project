@@ -1,3 +1,5 @@
+//@Author: Robert Tedeschi
+
 package com.example.se_project;
 
 import javafx.fxml.FXML;
@@ -25,41 +27,26 @@ public class SearchUserViewController {
     @FXML
     protected Button searchButton;
     @FXML
-    protected Button fullCustomerListButton;
+    protected Button fullUsersListButton;
     @FXML
     protected Label idLabel;
     @FXML
     protected Label idValueLabel;
     @FXML
-    protected Label companyLabel;
+    protected Label fnameLabel;
     @FXML
-    protected Label companyValueLabel;
+    protected Label fnameValueLabel;
     @FXML
-    protected Label streetLabel;
+    protected Label lnameLabel;
     @FXML
-    protected Label streetValueLabel;
+    protected Label lnameValueLabel;
     @FXML
-    protected Label cityLabel;
+    protected Label roleLabel;
     @FXML
-    protected Label cityValueLabel;
-    @FXML
-    protected Label stateLabel;
-    @FXML
-    protected Label stateValueLabel;
-    @FXML
-    protected Label balanceLabel;
-    @FXML
-    protected Label balanceValueLabel;
-    @FXML
-    protected Label lastPaidLabel;
-    @FXML
-    protected Label lastPaidValueLabel;
-    @FXML
-    protected Label lastOrderLabel;
-    @FXML
-    protected Label lastOrderValueLabel;
+    protected Label roleValueLabel;
     @FXML
     protected Button backToMainButton;
+
     public void initialize()
     {
         byIdRadioButton.setToggleGroup(toggle);
@@ -75,7 +62,7 @@ public class SearchUserViewController {
     @FXML
     public void onListAllUsersButtonClick() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("List-all-users-view.fxml"));
-        Stage window = (Stage) fullCustomerListButton.getScene().getWindow();
+        Stage window = (Stage) fullUsersListButton.getScene().getWindow();
         window.setScene(new Scene(root));
     }
     @FXML
@@ -84,7 +71,7 @@ public class SearchUserViewController {
 
         if(isFilterSelected())
         {
-            findCustomerInDB();
+            findUserInDB();
             if(!foundInDB())
             {
                 notFoundAlert();
@@ -93,7 +80,7 @@ public class SearchUserViewController {
             }
             else
             {
-                showCustomerInfo();
+                showUserInfo();
             }
         }
         else
@@ -109,30 +96,28 @@ public class SearchUserViewController {
         else
             return true;
     }
-    public void findCustomerInDB() throws SQLException
+    public void findUserInDB() throws SQLException
     {
         DBConnection connection = new DBConnection();
         results =  connection.getResults(getQuery());
         connection.closeConnection();
 
     }
-    public void displayResults() throws SQLException {
 
-    }
     public String getQuery()
     {
         if (byIdRadioButton.isSelected())
         {
-            return "select * from customer where ID =" +Integer.parseInt(searchTextField.getText())+";";
+            return "select * from users where ID =" +Integer.parseInt(searchTextField.getText())+";";
         }
         else
         {
-            return "select * from customer where company_name ='"+ searchTextField.getText()+ "';";
+            return "select * from users where last_name ='"+ searchTextField.getText()+ "';";
         }
     }
     public void notFoundAlert()
     {
-        Alert notFound = new Alert(Alert.AlertType.ERROR, "Customer not found! try again", ButtonType.CLOSE);
+        Alert notFound = new Alert(Alert.AlertType.ERROR, "User not found! try again", ButtonType.CLOSE);
         notFound.show();
 
     }
@@ -148,59 +133,34 @@ public class SearchUserViewController {
         else
             return false;
     }
-    public void showCustomerInfo()
+    public void showUserInfo()
     {
-        idLabel.setText("Customer ID: ");
+        idLabel.setText("User ID: ");
         idValueLabel.setText(results.get(0).get("ID").toString());
 
-        companyLabel.setText("Company Name: ");
-        companyValueLabel.setText(results.get(0).get("company_name").toString());
+        fnameLabel.setText("First Name: ");
+        fnameValueLabel.setText(results.get(0).get("first_name").toString());
 
-        streetLabel.setText("Street address: ");
-        streetValueLabel.setText(results.get(0).get("street_adress").toString());
+        lnameLabel.setText("Last Name: ");
+        lnameValueLabel.setText(results.get(0).get("last_name").toString());
 
-        cityLabel.setText("City: ");
-        cityValueLabel.setText(results.get(0).get("city").toString());
+        roleLabel.setText("Role: ");
+        roleValueLabel.setText(results.get(0).get("role").toString());
 
-        stateLabel.setText("State: ");
-        stateValueLabel.setText(results.get(0).get("state").toString());
 
-        balanceLabel.setText("Balance: ");
-        balanceValueLabel.setText("$" + results.get(0).get("balance").toString());
-
-        lastPaidLabel.setText("Last Paid Amount: ");
-        lastPaidValueLabel.setText("$"+ results.get(0).get("last_paid_amount").toString());
-
-        if (results.get(0).get("last_order_date") != null)
-        {
-            lastOrderLabel.setText("Last order date: ");
-            lastOrderValueLabel.setText(results.get(0).get("last_order_date").toString());
-        }
     }
     public void emptyLabels()
     {
         idLabel.setText("");
         idValueLabel.setText("");
 
-        companyLabel.setText("");
-        companyValueLabel.setText("");
+        fnameLabel.setText("");
+        fnameValueLabel.setText("");
 
-        streetLabel.setText("");
-        streetValueLabel.setText("");
+        lnameLabel.setText("");
+        lnameValueLabel.setText("");
 
-        cityLabel.setText("");
-        cityValueLabel.setText("");
-
-        stateLabel.setText("");
-        stateValueLabel.setText("");
-
-        balanceLabel.setText("");
-        balanceValueLabel.setText("");
-
-        lastPaidLabel.setText("");
-        lastPaidValueLabel.setText("");
-
-        lastOrderLabel.setText("");
-        lastOrderValueLabel.setText("");
+        roleLabel.setText("");
+        roleValueLabel.setText("");
     }
 }

@@ -23,7 +23,7 @@
                  GridPane.columnIndex="1"
                  GridPane.rowIndex="1"/>
     <RadioButton fx:id="byNameRadioButton"
-                 text="Name"
+                 text="Last Name"
                  GridPane.columnIndex="2"
                  GridPane.rowIndex="1"/>
 
@@ -35,7 +35,7 @@
             GridPane.columnIndex="2"
             GridPane.rowIndex="2"
             onAction="#onSearchButtonClick"/>
-    <Button fx:id="fullUserListButton"
+    <Button fx:id="fullUsersListButton"
             text="See list of users"
             GridPane.columnIndex="3"
             GridPane.rowIndex="2"
@@ -48,54 +48,27 @@
            GridPane.columnIndex="2"
            GridPane.rowIndex="4"/>
 
-    <Label fx:id="companyLabel"
+    <Label fx:id="fnameLabel"
            GridPane.columnIndex="1"
            GridPane.rowIndex="5"/>
-    <Label fx:id="companyValueLabel"
+    <Label fx:id="fnameValueLabel"
            GridPane.columnIndex="2"
            GridPane.rowIndex="5"/>
 
-    <Label fx:id="streetLabel"
+    <Label fx:id="lnameLabel"
            GridPane.columnIndex="1"
            GridPane.rowIndex="6"/>
-    <Label fx:id="streetValueLabel"
+    <Label fx:id="lnameValueLabel"
            GridPane.columnIndex="2"
            GridPane.rowIndex="6"/>
 
-    <Label fx:id="cityLabel"
+    <Label fx:id="roleLabel"
            GridPane.columnIndex="1"
            GridPane.rowIndex="7"/>
-    <Label fx:id="cityValueLabel"
+    <Label fx:id="roleValueLabel"
            GridPane.columnIndex="2"
            GridPane.rowIndex="7"/>
 
-    <Label fx:id="stateLabel"
-           GridPane.columnIndex="1"
-           GridPane.rowIndex="8"/>
-    <Label fx:id="stateValueLabel"
-           GridPane.columnIndex="2"
-           GridPane.rowIndex="8"/>
-
-    <Label fx:id="balanceLabel"
-           GridPane.columnIndex="1"
-           GridPane.rowIndex="9"/>
-    <Label fx:id="balanceValueLabel"
-           GridPane.columnIndex="2"
-           GridPane.rowIndex="9"/>
-
-    <Label fx:id="lastPaidLabel"
-           GridPane.columnIndex="1"
-           GridPane.rowIndex="10"/>
-    <Label fx:id="lastPaidValueLabel"
-           GridPane.columnIndex="2"
-           GridPane.rowIndex="10"/>
-
-    <Label fx:id="lastOrderLabel"
-           GridPane.columnIndex="1"
-           GridPane.rowIndex="11"/>
-    <Label fx:id="lastOrderValueLabel"
-           GridPane.columnIndex="2"
-           GridPane.rowIndex="11"/>
 
     <Button fx:id="backToMainButton"
             text="Back to menu"

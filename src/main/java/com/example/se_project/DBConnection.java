@@ -16,10 +16,12 @@ public class DBConnection {
         connection = DriverManager.getConnection(SQL);
         statement = connection.createStatement();
     }
+
     public void addEntryToDB(String query) throws SQLException {
         statement.execute(query);
 
     }
+
     //returns a List
     public List<Map<String, Object>> getResults(String query) throws SQLException {
             ResultSet rs = statement.executeQuery(query);
@@ -29,11 +31,14 @@ public class DBConnection {
 
 
     }
+
     //returns ResultSet
     public ResultSet getResultSet(String query) throws SQLException
     {
         return statement.executeQuery(query);
     }
+
+
     public List<Map<String, Object>> resultSetToList(ResultSet rs) throws SQLException {
         ResultSetMetaData md = rs.getMetaData();
         int columns = md.getColumnCount();
@@ -49,6 +54,8 @@ public class DBConnection {
         }
         return rows;
     }
+
+
     public void closeConnection() throws SQLException {
         connection.close();
     }

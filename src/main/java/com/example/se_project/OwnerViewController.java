@@ -5,13 +5,22 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 
 public class OwnerViewController {
+
+    private List<Map<String, Object>> vendorIDs = new ArrayList<>();
+    private List<Map<String, Object>> vendorNames = new ArrayList<>();
     @FXML
     Button editCustomerButton;
     @FXML
@@ -34,6 +43,41 @@ public class OwnerViewController {
     Button logoutButton;
     @FXML
     Button searchUserButton;
+
+
+    @FXML
+    public void initialize()throws SQLException {
+        getVendorIDs();
+        if(!vendorIDs.isEmpty()) {
+            for (int i = 0; i < vendorIDs.size(); i++) {
+                int x = Integer.parseInt(vendorIDs.get(0).get("ID").toString());
+                displaySeasonalDiscount(x);
+            }
+        }
+
+    }
+
+    public void displaySeasonalDiscount(int ID) throws SQLException {
+        String vendorName = getVendorName(ID);
+        Alert discount = new Alert(Alert.AlertType.INFORMATION,  vendorName+"'s seasonal discounts are here!", ButtonType.CLOSE);
+        discount.show();
+    }
+
+    public String getVendorName(int ID) throws SQLException {
+        DBConnection connection = new DBConnection();
+        vendorNames =  connection.getResults("select company_name from vendor where ID = "+ID+";");
+        connection.closeConnection();
+        return vendorNames.get(0).get("company_name").toString();
+
+    }
+
+    public void getVendorIDs()throws SQLException{
+        String query = "select ID from vendor where seasonal_discount_start <  CAST( current_timestamp() AS Date ) ;";
+        DBConnection connection = new DBConnection();
+        vendorIDs =  connection.getResults(query);
+        connection.closeConnection();
+    }
+
 
     @FXML
     public void onCreateCustomerButtonClick() throws IOException {

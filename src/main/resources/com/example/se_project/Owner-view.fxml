@@ -46,4 +46,11 @@
             onAction="#onSearchCustomerButtonClick"
     />
 
+    <Button fx:id="DisplayAllItemsButton"
+            GridPane.columnIndex="0"
+            GridPane.rowIndex="3"
+            text="Display all available items"
+            onAction="#onDisplayAllItemsButtonClick"
+    />
+
 </GridPane>

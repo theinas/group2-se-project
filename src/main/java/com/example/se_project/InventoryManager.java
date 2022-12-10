@@ -1,17 +1,14 @@
 package com.example.se_project;
-
-/*
-Developer: Tanni Dev
-*/
+//Joshua
 
 import java.sql.SQLException;
 
-public class Purchaser extends User{
+public class InventoryManager extends User {
 
-    public Purchaser(String lastName, String firstName,String password) throws SQLException {
+    public InventoryManager(String lastName, String firstName, String password) throws SQLException {
         this.setLastName(lastName);
         this.setFirstName(firstName);
-        this.setRole(UserRoles.PURCHASER);
+        this.setRole(UserRoles.INVENTORY_MANAGER);
         addToDB(lastName, firstName, password);
     }
 
@@ -27,12 +24,10 @@ public class Purchaser extends User{
 
 
     public void addToDB(String ln, String fn, String password) throws SQLException {
-        String query = "INSERT INTO users(last_name, first_name, password, role) values(" + ln+ ","+fn+","
-                +password+"," + role+");";
+        String query = "INSERT INTO users(last_name, first_name, password, role) values(" + ln + "," + fn + ","
+                + password + "," + this.getRole().toString() + ");";
         DBConnection connection = new DBConnection();
         connection.addEntryToDB(query);
         connection.closeConnection();
     }
-
-
 }

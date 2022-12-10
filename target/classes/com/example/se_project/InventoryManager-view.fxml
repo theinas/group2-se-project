@@ -15,35 +15,36 @@
 <?import java.lang.String?>
 
 <GridPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.se_project.OwnerViewController"
-            prefHeight="400.0" prefWidth="600.0">
+          xmlns:fx="http://javafx.com/fxml"
+          fx:controller="com.example.se_project.InventoryManagerViewController"
+          prefHeight="400.0" prefWidth="600.0">
     <padding><Insets top="25" right="25" bottom="10" left="25"/></padding>
-    <Button fx:id="createCustomerButton"
+
+    <Button fx:id="AddItemButton"
             GridPane.columnIndex="0"
             GridPane.rowIndex="0"
-            text="Create Customer Profiles"
-            onAction="#onCreateCustomerButtonClick"
-            />
-    <Button fx:id="editCustomerButton"
+            text="Create Item Profiles"
+            onAction="#onAddItemButtonClick"
+    />
+    <Button fx:id="EditItemButton"
             GridPane.columnIndex="1"
             GridPane.rowIndex="0"
-            text="Edit Customer Profiles"
-            onAction="#onEditCustomerButtonClick"
-            />
+            text="Edit Item Profiles"
+            onAction="#onEditItemButtonClick"
+    />
 
-    <Button fx:id="deleteCustomerButton"
+    <Button fx:id="DeleteItemButton"
             GridPane.columnIndex="0"
             GridPane.rowIndex="2"
-            text="Delete Customer Profiles"
-            onAction="#onDeleteCustomerButtonClick"
-            />
+            text="Delete Item Profiles"
+            onAction="#onDeleteItemButtonClick"
+    />
 
-    <Button fx:id="searchCustomerButton"
+    <Button fx:id="SearchForItemButton"
             GridPane.columnIndex="1"
             GridPane.rowIndex="2"
-            text="Search for a Customer Profile"
-            onAction="#onSearchCustomerButtonClick"
+            text="Search for an Item Profile"
+            onAction="#onSearchForItemButtonClick"
     />
 
     <Button fx:id="DisplayAllItemsButton"
@@ -52,5 +53,13 @@
             text="Display all available items"
             onAction="#onDisplayAllItemsButtonClick"
     />
+
+    <Button fx:id="backToMainButton"
+            GridPane.columnIndex="0"
+            GridPane.rowIndex="4"
+            text="Return to Home"
+            onAction="#onBackToMainButtonClick"
+    />
+
 
 </GridPane>

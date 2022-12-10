@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Text?>
+<GridPane xmlns="http://javafx.com/javafx"
+          xmlns:fx="http://javafx.com/fxml"
+          fx:controller="com.example.se_project.SearchForItemViewController"
+          prefHeight="400.0" prefWidth="600.0">
+    <padding><Insets top="25" right="25" bottom="10" left="25"/></padding>
+    <Text>Search for an item</Text>
+    <Text text="Search by:"
+          GridPane.columnIndex="0"
+          GridPane.rowIndex="1"/>
+    <RadioButton fx:id="byIdRadioButton"
+                 text="ID"
+                 GridPane.columnIndex="1"
+                 GridPane.rowIndex="1"/>
+    <RadioButton fx:id="byNameRadioButton"
+                 text="Name"
+                 GridPane.columnIndex="2"
+                 GridPane.rowIndex="1"/>
+    <RadioButton fx:id="byExpirationRadioButton"
+                 text="Expiration Date"
+                 GridPane.columnIndex="3"
+                 GridPane.rowIndex="1"/>
+
+    <TextField fx:id="searchTextField"
+               GridPane.columnIndex="1"
+               GridPane.rowIndex="2"/>
+
+    <Button fx:id="searchButton"
+            text="Search"
+            GridPane.columnIndex="2"
+            GridPane.rowIndex="2"
+            onAction="#onSearchButtonClick"/>
+
+    <Button fx:id="FullItemListButton"
+            text="See list of all items"
+            GridPane.columnIndex="3"
+            GridPane.rowIndex="2"
+            onAction="#onDisplayAllItemsButtonClick"/>
+
+    <Label fx:id="idLabel"
+           GridPane.columnIndex="1"
+           GridPane.rowIndex="4"/>
+    <Label fx:id="idValueLabel"
+           GridPane.columnIndex="2"
+           GridPane.rowIndex="4"/>
+
+    <Label fx:id="nameLabel"
+           GridPane.columnIndex="3"
+           GridPane.rowIndex="4"/>
+    <Label fx:id="nameValueLabel"
+           GridPane.columnIndex="3"
+           GridPane.rowIndex="4"/>
+
+    <Label fx:id="quantityLabel"
+           GridPane.columnIndex="1"
+           GridPane.rowIndex="5"/>
+    <Label fx:id="quantityValueLabel"
+           GridPane.columnIndex="2"
+           GridPane.rowIndex="5"/>
+    <Label fx:id = "measurementValueLabel"
+           GridPane.columnIndex="3"
+           GridPane.rowIndex="5"/>
+
+    <Label fx:id="purchasePriceLabel"
+           GridPane.columnIndex="1"
+           GridPane.rowIndex="6"/>
+    <Label fx:id="purchasePriceValueLabel"
+           GridPane.columnIndex="2"
+           GridPane.rowIndex="6"/>
+
+    <Label fx:id="salePriceLabel"
+           GridPane.columnIndex="3"
+           GridPane.rowIndex="6"/>
+    <Label fx:id="salePriceValueLabel"
+           GridPane.columnIndex="4"
+           GridPane.rowIndex="6"/>
+
+    <Label fx:id="expirationLabel"
+           GridPane.columnIndex="1"
+           GridPane.rowIndex="7"/>
+    <Label fx:id="expirationValueLabel"
+           GridPane.columnIndex="2"
+           GridPane.rowIndex="7"/>
+
+    <Label fx:id="vendorLabel"
+           GridPane.columnIndex="1"
+           GridPane.rowIndex="8"/>
+    <Label fx:id="vendorValueLabel"
+           GridPane.columnIndex="2"
+           GridPane.rowIndex="8"/>
+
+    <Button fx:id="backToMainButton"
+            text="Back to Menu"
+            GridPane.columnIndex="3"
+            GridPane.rowIndex="10"
+            onAction="#onBackToMainButtonClick"/>
+</GridPane>

@@ -2,10 +2,12 @@
 
 package com.example.se_project;
 
+import java.time.Instant;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -39,9 +41,9 @@ public class InputValidator {
     public boolean validateDate(LocalDate date)
     {
         if (date.isAfter(LocalDate.now()))
-            return true;
-        else
             return false;
+        else
+            return true;
     }
     public Boolean validateDouble(String number, String errorMessage)
     {
@@ -57,5 +59,33 @@ public class InputValidator {
             return false;
         }
 
+    }
+    public boolean validateDayMonthYear(Date date)
+    {
+        if(date.getYear() < 3000 && date.getYear() > 1000
+                && date.getMonth() <= 12 && date.getMonth() >=1
+                && date.getDay() >=1 && date.getDay() <= 31)
+            return true;
+        else
+            return false;
+    }
+
+
+    public boolean validateNotNegative(Double price)
+    {
+        if(price >= 0)
+            return true;
+        else
+            return false;
+    };
+    public boolean validateFutureDate(Date date)
+    {
+        Instant now = Instant.now();
+        java.util.Date compare = java.util.Date.from(now);
+        java.util.Date enteredDate = new java.util.Date(date.getYear(), date.getMonth(), date.getDay());
+        if(compare.before(enteredDate))
+            return true;
+        else
+            return false;
     }
 }

@@ -7,6 +7,7 @@ import javafx.scene.control.DatePicker;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+
 public class Date {
     private int day;
     private int month;
@@ -16,12 +17,25 @@ public class Date {
     {
 
     }
-    public Date(int day, int month, int year)
-    {
-        this.day=day;
-        this.month=month;
-        this.year=year;
+    public Date(int day, int month, int year) {
+        this.day = day;
+        this.month = month;
+        this.year = year;
     }
+
+    public int getDay()
+    {
+        return day;
+    }
+    public int getMonth()
+    {
+        return month;
+    }
+    public int getYear()
+    {
+        return year;
+    }
+
 
     public void setYear(int year) {
         this.year = year;
@@ -35,11 +49,18 @@ public class Date {
         this.month = month;
     }
 
-    public void convertDatePickerToDate(DatePicker datePicker)
+    public void convertToDate(DatePicker datePicker)
     {
          setYear(datePicker.getValue().getYear());
          setMonth(datePicker.getValue().getMonthValue());
          setDay(datePicker.getValue().getDayOfMonth());
+
+    }
+    public void convertDatePickerToDate(DatePicker datePicker)
+    {
+        setYear(datePicker.getValue().getYear());
+        setMonth(datePicker.getValue().getMonthValue());
+        setDay(datePicker.getValue().getDayOfMonth());
 
     }
     public void convertStringToDate(String date)
@@ -51,6 +72,7 @@ public class Date {
         this.month = formatted.getMonthValue();
         this.year = formatted.getYear();
     }
+
 
     @Override
     public String toString() {

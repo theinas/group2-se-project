@@ -201,20 +201,21 @@ public class ErrorController {
             // future date
             System.out.println("Date1 is after Date2");
             return true;
-        } else if (d1.compareTo(d2) < 0) {
-
-            // When Date d1 < Date d2
-            System.out.println("Date1 is before Date2");
-            AlertController a = new AlertController(Alert.AlertType.ERROR, "Date Error", "date cannot be added to the past");
-            return false;
-
-        } else if (d1.compareTo(d2) == 0) {
-
-            // When Date d1 = Date d2
-            System.out.println("Date1 is equal to Date2");
-            AlertController a = new AlertController(Alert.AlertType.ERROR, "Date Error", "date cannot be equal to today");
-            return false;
         }
+//        } else if (d1.compareTo(d2) < 0) {
+//
+//            // When Date d1 < Date d2
+//            System.out.println("Date1 is before Date2");
+//            AlertController a = new AlertController(Alert.AlertType.ERROR, "Date Error", "date cannot be added to the past");
+//            return false;
+//
+//        } else if (d1.compareTo(d2) == 0) {
+//
+//            // When Date d1 = Date d2
+//            System.out.println("Date1 is equal to Date2");
+//            AlertController a = new AlertController(Alert.AlertType.ERROR, "Date Error", "date cannot be equal to today");
+//            return false;
+//        }
         return false;
     }
 }

@@ -20,6 +20,7 @@ import javafx.stage.Stage;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.List;
@@ -30,8 +31,8 @@ import java.util.ResourceBundle;
 public class Vendor_CustomerController implements Initializable {
 
 
-    DB_Connection con;
-    Connection connection;
+//    DB_Connection con;
+//    Connection connection;
 
     @FXML
     private TextField txtid;
@@ -117,13 +118,9 @@ public class Vendor_CustomerController implements Initializable {
         // TODO
 //        con = new DB_Connection();
 //        connection = con.getConnection();
-//
-//
+
         setDefault();
 
-
-
-//        txtState.getItems().addAll("VA", "DC");
         txtState.getItems().addAll( "AL", "AK", "AS", "AZ", "AR", "CA", "CO", "CT", "DE", "DC", "FM", "FL", "GA", "GU", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MH", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "MP", "OH", "OK", "OR", "PW", "PA", "PR", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VI", "VA", "WA", "WV", "WI", "WY" );
         txtBalance.setText("0");
         txtLastPaid.setText("0");
@@ -252,7 +249,7 @@ public class Vendor_CustomerController implements Initializable {
                 System.out.println(e.toString());
             }
             int check = 0;
-            if (ErrorController.nameChecker(name, 20, "Company Full Name") && ErrorController.strChecker(address, 20, "Street Address") && ErrorController.nameChecker(city, 20, "City") && state != null && ErrorController.phnChecker(phone) && ErrorController.phnChecker(phone) && ErrorController.numChecker(balance, "Balance") && ErrorController.numChecker(lastPaid, "Last Paid") && ErrorController.pastChecker(lastdate) && ErrorController.pastChecker(sessional)) {
+            if (ErrorController.nameChecker(name, 20, "Company Full Name") && ErrorController.strChecker(address, 20, "Street Address") && ErrorController.nameChecker(city, 20, "City") && state != null && ErrorController.phnChecker(phone) && ErrorController.phnChecker(phone) && ErrorController.numChecker(balance, "Balance") && ErrorController.numChecker(lastPaid, "Last Paid") && ErrorController.pastChecker(sessional)) {
                 check = 1;
             }
 
@@ -308,10 +305,11 @@ public class Vendor_CustomerController implements Initializable {
 //                    String q = "UPDATE project.vendor SET street_address = '" + address + "', city ='" + city + "',state ='" + state + "', phone ='" + phone + "',balance= '" + balance + "', last_paid_amount = '" + lastPaid + "', last_order_date ='" + lastdate + "', seasonal_discount_start ='" + sessional + "' where ID = '" + id + "'";
 //                    s.execute(q);
 
-                    String query_update = "UPDATE project.vendor SET street_address = '" + address + "', city ='" + city + "',state ='" + state + "', phone ='" + phone + "',balance= '" + balance + "', last_paid_amount = '" + lastPaid + "', last_order_date ='" + lastdate + "', seasonal_discount_start ='" + sessional + "' where ID = '" + id + "'";
+                    String query_update = "UPDATE project.vendor SET street_address = '" + address + "', city ='" + city + "',state ='" + state + "', phone ='" + phone + "',balance= '" + balance + "', last_paid_amount = '" + lastPaid + "', last_order_date ='" + lastdate + "', seasonal_discount_start ='" + sessional + "' where ID = '" + txrSearch.getText() + "'";
                     DBConnection connection = new DBConnection();
                     connection.addEntryToDB(query_update);
                     connection.closeConnection();
+                    setDefault();
 
 //                    String query = "UPDATE project.vendor SET staddress = '" + address + "', city ='" + city + "',state ='" + state + "', phone ='" + phone + "',balance= '" + balance + "', lastpaidamount = '" + lastPaid + "', lastorderdate ='" + lastdate + "', sessionaldiscountstartdate ='" + sessional + "' where id = '" + id + "'";
 //                    DBConnection connection = new DBConnection();
@@ -337,17 +335,20 @@ public class Vendor_CustomerController implements Initializable {
         btnDelete.setOnAction(event -> {
             if (balance == 0) {
 
-                String query1 = "delete from project.vendor where ID = '" + id + "'";
+                String query1 = "delete from project.vendor where ID = '" + txrSearch.getText() + "'";
                 try {
                     if (txtFullName.getLength() >= 1) {
+
 //                        Statement s = connection.createStatement();
 //                        s.execute(query1);
-
+                        deleteItemfromItemTable(Integer.parseInt(txrSearch.getText()));
                         DBConnection connection = new DBConnection();
                         connection.addEntryToDB(query1);
                         connection.closeConnection();
 
                         setDefault();
+
+                        ///trunForeignkeyOnOFF(1);
 
 
                         AlertController a = new AlertController(Alert.AlertType.INFORMATION, null, "Successfully Deleted");
@@ -391,6 +392,14 @@ public class Vendor_CustomerController implements Initializable {
             }
         });
 
+    }
+
+    public void deleteItemfromItemTable(int val) throws SQLException {
+
+        String query1 = "delete from project.item where vendor_id = " + val + "";
+            DBConnection connection = new DBConnection();
+            connection.addEntryToDB(query1);
+            connection.closeConnection();
     }
 
     public void clear() {
